@@ -359,7 +359,7 @@ module.exports = function (grunt) {
             '.htaccess',
             '*.html',
             '.gitignore',
-            'app.js',
+            'web.js',
             'Procfile',
             'package.json',
             'views/{,*/}*.html',
