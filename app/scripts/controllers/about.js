@@ -2,16 +2,12 @@
 
 /**
  * @ngdoc function
- * @name anjinhospeludosApp.controller:AboutCtrl
+ * @name todasAsPatasApp.controller:AboutCtrl
  * @description
  * # AboutCtrl
- * Controller of the anjinhospeludosApp
+ * Controller of the todasAsPatasApp
  */
-angular.module('anjinhospeludosApp')
+angular.module('todasAsPatasApp')
   .controller('AboutCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    
   });

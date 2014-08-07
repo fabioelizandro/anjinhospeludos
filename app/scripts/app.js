@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name anjinhospeludosApp
+ * @name todasAsPatasApp
  * @description
- * # anjinhospeludosApp
+ * # todasAsPatasApp
  *
  * Main module of the application.
  */
 angular
-  .module('anjinhospeludosApp', [
+  .module('todasAsPatasApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
