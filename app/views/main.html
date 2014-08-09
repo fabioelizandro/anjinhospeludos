@@ -1,12 +1,133 @@
 <div class="row">
-    <div class="col-sm-6 col-md-2">
-        <div class="thumbnail">
-            <img class="img-responsive" src="http://placehold.it/350x350" alt="Foto do animal">
-            <div class="caption">
-                <h3>Nome do cachorro</h3>
-                <p>Aqui vai a descrição</p>
-                <p><a href="#" class="btn btn-primary" role="button">Ver Perfil</a></p>
+    <div class="col-sm-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2>Filtros</h2>
+            </div>
+            <div class="panel-body">
+                <form role="form">
+                    <div class="form-group">
+                        <h3>Deve conter</h3>
+                        <div class="checkbox checkbox-row">
+                            <label>
+                                <input type="checkbox" ng-model="filters.mustInclude.photos" > Fotos
+                            </label>
+                        </div>
+                        <div class="checkbox checkbox-row">
+                            <label>
+                                <input type="checkbox" ng-model="filters.mustInclude.videos" > Vídeos
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h3>Raça</h3>
+                        <div class="checkbox checkbox-row">
+                            <label>
+                                <input type="checkbox" ng-model="filters.breed.purebred" > Mostra apenas puros
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h3>Sexo</h3>
+                        <div class="checkbox checkbox-row">
+                            <label>
+                                <input type="checkbox" ng-model="filters.gender.male" > Macho
+                            </label>
+                        </div>
+                        <div class="checkbox checkbox-row">
+                            <label>
+                                <input type="checkbox" ng-model="filters.gender.famale" > Fêmea
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h3>Idade</h3>
+                        <div class="checkbox checkbox-row">
+                            <label>
+                                <input type="checkbox" ng-model="filters.age.baby" > Bebê
+                            </label>
+                        </div>
+                        <div class="checkbox checkbox-row">
+                            <label>
+                                <input type="checkbox" ng-model="filters.age.young" > Jovem
+                            </label>
+                        </div>
+                        <div class="checkbox checkbox-row">
+                            <label>
+                                <input type="checkbox" ng-model="filters.age.adult" > Adulto
+                            </label>
+                        </div>
+                        <div class="checkbox checkbox-row">
+                            <label>
+                                <input type="checkbox" ng-model="filters.age.senior" > Senhor
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h3>Tamanho</h3>
+                        <div class="checkbox checkbox-row">
+                            <label>
+                                <input type="checkbox" ng-model="filters.size.small" > Pequeno
+                            </label>
+                        </div>
+                        <div class="checkbox checkbox-row">
+                            <label>
+                                <input type="checkbox" ng-model="filters.size.medium" > Médio
+                            </label>
+                        </div>
+                        <div class="checkbox checkbox-row">
+                            <label>
+                                <input type="checkbox" ng-model="filters.size.larger" > Grande
+                            </label>
+                        </div>
+                        <div class="checkbox checkbox-row">
+                            <label>
+                                <input type="checkbox" ng-model="filters.size.xLarger" > Muito Grande
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h3>Cor</h3>
+                        <div class="checkbox checkbox-row">
+                            <label>
+                                <input type="checkbox" ng-model="filters.color.black" > Pequeno
+                            </label>
+                        </div>
+                        <div class="checkbox checkbox-row">
+                            <label>
+                                <input type="checkbox" ng-model="filters.color.blackAndWhite" > Médio
+                            </label>
+                        </div>
+                        <div class="checkbox checkbox-row">
+                            <label>
+                                <input type="checkbox" ng-model="filters.color.blackTan" > Grande
+                            </label>
+                        </div>
+                        <div class="checkbox checkbox-row">
+                            <label>
+                                <input type="checkbox" ng-model="filters.color.white" > Muito Grande
+                            </label>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
+        <button class="btn btn-success btn-lg btn-block">Salvar minha busca</button>
+        <button class="btn btn-default btn-lg btn-block">Limpar todos os filtros</button>
+    </div>
+    <div class="col-sm-9">
+        <div class="row" data-isotope data-item-selector=".animal" data-layout-mode="masonry">
+            <div class="animal col-sm-4" ng-repeat="dog in dogs">
+                <div class="thumbnail">
+                    <img class="img-responsive" ng-src="{{dog.image}}"  alt="Foto do animal">
+                    <div class="caption">
+                        <h3>Nome do cachorro</h3>
+                        <p>Aqui vai a descrição</p>
+                        <p><a href="#" class="btn btn-primary" role="button">Ver Perfil</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
