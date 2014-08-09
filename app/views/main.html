@@ -1,131 +1,7 @@
-<div class="row">
-    <div class="col-sm-3">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3>Filtros</h3>
-            </div>
-            <div class="panel-body">
-                <form role="form">
-                    <div class="form-group">
-                        <h4>Deve conter</h4>
-                        <div class="checkbox checkbox-row">
-                            <label>
-                                <input type="checkbox" ng-model="filters.mustInclude.photos" > Fotos
-                            </label>
-                        </div>
-                        <div class="checkbox checkbox-row">
-                            <label>
-                                <input type="checkbox" ng-model="filters.mustInclude.videos" > Vídeos
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <h4>Raça</h4>
-                        <div class="checkbox checkbox-row">
-                            <label>
-                                <input type="checkbox" ng-model="filters.breed.purebred" > Mostra apenas puros
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <h4>Sexo</h4>
-                        <div class="checkbox checkbox-row">
-                            <label>
-                                <input type="checkbox" ng-model="filters.gender.male" > Macho
-                            </label>
-                        </div>
-                        <div class="checkbox checkbox-row">
-                            <label>
-                                <input type="checkbox" ng-model="filters.gender.famale" > Fêmea
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <h4>Idade</h4>
-                        <div class="checkbox checkbox-row">
-                            <label>
-                                <input type="checkbox" ng-model="filters.age.baby" > Bebê
-                            </label>
-                        </div>
-                        <div class="checkbox checkbox-row">
-                            <label>
-                                <input type="checkbox" ng-model="filters.age.young" > Jovem
-                            </label>
-                        </div>
-                        <div class="checkbox checkbox-row">
-                            <label>
-                                <input type="checkbox" ng-model="filters.age.adult" > Adulto
-                            </label>
-                        </div>
-                        <div class="checkbox checkbox-row">
-                            <label>
-                                <input type="checkbox" ng-model="filters.age.senior" > Senhor
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <h4>Tamanho</h4>
-                        <div class="checkbox checkbox-row">
-                            <label>
-                                <input type="checkbox" ng-model="filters.size.small" > Pequeno
-                            </label>
-                        </div>
-                        <div class="checkbox checkbox-row">
-                            <label>
-                                <input type="checkbox" ng-model="filters.size.medium" > Médio
-                            </label>
-                        </div>
-                        <div class="checkbox checkbox-row">
-                            <label>
-                                <input type="checkbox" ng-model="filters.size.larger" > Grande
-                            </label>
-                        </div>
-                        <div class="checkbox checkbox-row">
-                            <label>
-                                <input type="checkbox" ng-model="filters.size.xLarger" > Muito Grande
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <h4>Cor</h4>
-                        <div class="checkbox checkbox-row">
-                            <label>
-                                <input type="checkbox" ng-model="filters.color.black" > Pequeno
-                            </label>
-                        </div>
-                        <div class="checkbox checkbox-row">
-                            <label>
-                                <input type="checkbox" ng-model="filters.color.blackAndWhite" > Médio
-                            </label>
-                        </div>
-                        <div class="checkbox checkbox-row">
-                            <label>
-                                <input type="checkbox" ng-model="filters.color.blackTan" > Grande
-                            </label>
-                        </div>
-                        <div class="checkbox checkbox-row">
-                            <label>
-                                <input type="checkbox" ng-model="filters.color.white" > Muito Grande
-                            </label>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <button class="btn btn-primary btn-lg btn-block" ng-click="clearFilters()">Limpar todos os filtros</button>
-    </div>
-    <div class="col-sm-9">
-        <div class="row" style="margin-bottom: 10px;">
-            <div class="col-sm-3 col-sm-offset-9">
-                <select class="form-control input-lg">
-                    <option>Ordenar por</option>
-                    <option>Mais recentes</option>
-                    <option>Mias vistos</option>
-                </select>
-            </div>
-        </div>
+<div class="row row-offcanvas row-offcanvas-right">
+    <div class="col-xs-12 col-sm-9">
         <div class="row" data-isotope data-item-selector=".animal" data-layout-mode="masonry">
-            <div class="animal col-sm-12 col-md-4" ng-repeat="dog in dogs">
+            <div class="animal col-xs-12 col-sm-6 col-md-4" ng-repeat="dog in dogs">
                 <div class="thumbnail">
                     <img class="img-responsive" ng-src="{{dog.image}}"  alt="Foto do animal">
                     <div class="caption">
@@ -137,5 +13,19 @@
             </div>
         </div>
 
+    </div>
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <div class="list-group">
+            <a href="#" class="list-group-item active">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+        </div>
     </div>
 </div>
