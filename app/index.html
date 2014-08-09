@@ -22,11 +22,20 @@
         <!-- Add your site or application content here -->
         <div class="container-fluid">
             <div class="header">
-                <ul class="nav nav-pills pull-right">
-                    <li class="active"><a ng-href="#">Home</a></li>
-                    <li><a ng-href="#/about">About</a></li>
-                    <li><a ng-href="#">Contato</a></li>
-                </ul>
+                <div class="filter-main navbar-right">
+                    <form class="navbar-form" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control input-lg" ng-model="filters.animal" placeholder="Animal">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-lg" ng-model="filters.breed" placeholder="Raça preferida">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-lg" ng-model="filters.region" placeholder="Região">
+                        </div>
+                        <button type="submit" class="btn btn-default btn-lg">Buscar</button>
+                    </form>
+                </div>
                 <h3 class="text-muted">Todas as Patas(logo)</h3>
             </div>
 

@@ -2,12 +2,12 @@
     <div class="col-sm-3">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h2>Filtros</h2>
+                <h3>Filtros</h3>
             </div>
             <div class="panel-body">
                 <form role="form">
                     <div class="form-group">
-                        <h3>Deve conter</h3>
+                        <h4>Deve conter</h4>
                         <div class="checkbox checkbox-row">
                             <label>
                                 <input type="checkbox" ng-model="filters.mustInclude.photos" > Fotos
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <h3>Raça</h3>
+                        <h4>Raça</h4>
                         <div class="checkbox checkbox-row">
                             <label>
                                 <input type="checkbox" ng-model="filters.breed.purebred" > Mostra apenas puros
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <h3>Sexo</h3>
+                        <h4>Sexo</h4>
                         <div class="checkbox checkbox-row">
                             <label>
                                 <input type="checkbox" ng-model="filters.gender.male" > Macho
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <h3>Idade</h3>
+                        <h4>Idade</h4>
                         <div class="checkbox checkbox-row">
                             <label>
                                 <input type="checkbox" ng-model="filters.age.baby" > Bebê
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <h3>Tamanho</h3>
+                        <h4>Tamanho</h4>
                         <div class="checkbox checkbox-row">
                             <label>
                                 <input type="checkbox" ng-model="filters.size.small" > Pequeno
@@ -87,7 +87,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <h3>Cor</h3>
+                        <h4>Cor</h4>
                         <div class="checkbox checkbox-row">
                             <label>
                                 <input type="checkbox" ng-model="filters.color.black" > Pequeno
@@ -112,16 +112,24 @@
                 </form>
             </div>
         </div>
-        <button class="btn btn-success btn-lg btn-block">Salvar minha busca</button>
-        <button class="btn btn-default btn-lg btn-block">Limpar todos os filtros</button>
+        <button class="btn btn-primary btn-lg btn-block" ng-click="clearFilters()">Limpar todos os filtros</button>
     </div>
     <div class="col-sm-9">
+        <div class="row" style="margin-bottom: 10px;">
+            <div class="col-sm-3 col-sm-offset-9">
+                <select class="form-control input-lg">
+                    <option>Ordenar por</option>
+                    <option>Mais recentes</option>
+                    <option>Mias vistos</option>
+                </select>
+            </div>
+        </div>
         <div class="row" data-isotope data-item-selector=".animal" data-layout-mode="masonry">
-            <div class="animal col-sm-4" ng-repeat="dog in dogs">
+            <div class="animal col-sm-12 col-md-4" ng-repeat="dog in dogs">
                 <div class="thumbnail">
                     <img class="img-responsive" ng-src="{{dog.image}}"  alt="Foto do animal">
                     <div class="caption">
-                        <h3>Nome do cachorro</h3>
+                        <h4>Nome do cachorro</h4>
                         <p>Aqui vai a descrição</p>
                         <p><a href="#" class="btn btn-primary" role="button">Ver Perfil</a></p>
                     </div>

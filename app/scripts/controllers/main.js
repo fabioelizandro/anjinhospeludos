@@ -21,6 +21,18 @@ angular.module('todasAsPatasApp')
                     {image: 'http://placehold.it/350x' + Math.floor((Math.random() * 350) + 250)}
                 ];
 
-
+                /**
+                 * Salva a pesquisa realizada
+                 */
+                $scope.saveSearch = function(){
+                    
+                };
+                
+                /**
+                 * Limpa todos os filtros
+                 */
+                $scope.clearFilters = function(){
+                    
+                };
 
             }]);
