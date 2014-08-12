@@ -10,6 +10,12 @@
 angular.module('todasAsPatasApp')
         .controller('MainCtrl', ['$scope', function($scope) {
 
+                /**
+                 * Filtros que serão utilizados para a listagem principal de animais
+                 */
+                $scope.filters = {};
+        
+                
                 $scope.dogs = [
                     {image: 'https://d23xpgl4j2w7z3.cloudfront.net/photos/animals/4054814/large_medium/21986064_500x496.jpg?1407402550'},
                     {image: 'https://d23xpgl4j2w7z3.cloudfront.net/photos/animals/3581186/large_medium/21309741_500x625.jpg?1403947582'},
@@ -20,18 +26,18 @@ angular.module('todasAsPatasApp')
                     {image: 'https://d23xpgl4j2w7z3.cloudfront.net/photos/animals/3876766/large_medium/21718225_500x649.jpg?1406107717'},
                     {image: 'https://d23xpgl4j2w7z3.cloudfront.net/photos/animals/4040830/large_medium/21922147_500x666.jpg?1407315453'}
                 ];
-
-                /**
-                 * Salva a pesquisa realizada
-                 */
-                $scope.saveSearch = function(){
-                    
-                };
                 
                 /**
                  * Limpa todos os filtros
                  */
                 $scope.clearFilters = function(){
+                    
+                };
+                
+                /**
+                 * Realiza os filtros para a listagem principal
+                 */
+                $scope.filter = function(){
                     
                 };
 

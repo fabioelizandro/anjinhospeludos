@@ -1,7 +1,12 @@
-$icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+@import "variables.scss";
+
 // bower:scss
 @import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
+
+
+
+
 
 html,
 body {
@@ -11,11 +16,40 @@ body {
     padding-top: 70px;
 }
 
+
+
+/*Formulário principal*/ 
+.form-main{
+    background-color: $gray-dark;
+    padding: 10px;
+    margin: 0px 0px 10px;
+    text-align: center;
+    .form-group,input[type="submit"]{
+            width: 19%;
+        }
+    .form-control{
+            width: 100%;
+        }
+
+}
+
+@media screen and (max-width: $screen-xs-max) {
+    .form-main{
+        .form-group, input[type="submit"]{
+            width: 100% !important;
+        }
+        
+    }
+}
+
+
+
+
 /*
  * Off Canvas
- * --------------------------------------------------
  */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $screen-sm-max) {
+
     .row-offcanvas {
         position: relative;
         -webkit-transition: all .25s ease-out;
