@@ -4,10 +4,6 @@
 @import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
 
-
-
-
-
 html,
 body {
     overflow-x: hidden; /* Prevent scroll on narrow devices */
@@ -18,31 +14,36 @@ body {
 
 
 
-/*Formulário principal*/ 
-.form-main{
+/*Filtro principal*/ 
+.filter-main{
     background-color: $gray-dark;
     padding: 10px;
     margin: 0px 0px 10px;
     text-align: center;
     .form-group,input[type="submit"]{
-            width: 19%;
-        }
+        width: 19%;
+    }
     .form-control{
-            width: 100%;
-        }
+        width: 100%;
+    }
 
 }
 
 @media screen and (max-width: $screen-xs-max) {
-    .form-main{
+    .filter-main{
         .form-group, input[type="submit"]{
             width: 100% !important;
         }
-        
+
     }
 }
 
-
+/*Filtro lateral*/
+.panel-title{
+    a{
+        cursor: pointer;
+    }
+}
 
 
 /*
