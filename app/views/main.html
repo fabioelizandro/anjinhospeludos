@@ -1,0 +1,83 @@
+<div class="row row-offcanvas row-offcanvas-right">
+    <div class="col-xs-12 col-sm-9">
+        <div class="row">
+            <div class="col-xs-12" >
+                <form class="form-inline filter-main" ng-submit="filter()" >
+                    <div class="form-group">
+                        <label class="sr-only" for="main-type">Tipo de animal</label>
+                        <select  class="form-control" id="main-type"  ng-model="filters.type">
+                            <option value="">Tipo de animal</option>
+                            <option>Cachorro</option>
+                            <option>Gato</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="main-breed">Raça preferida</label>
+                        <select  class="form-control" id="main-breed"  ng-model="filters.breed">
+                            <option value="">Raça preferida</option>
+                            <option>Akita</option>
+                            <option>Pit Bull</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="main-region">Região</label>
+                        <select  class="form-control" id="main-region"  ng-model="filters.region">
+                            <option value="">Região</option>
+                            <option>Grande Florianópolis</option>
+                            <option>Vale do Itajaí</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="main-region">Ordenar Por</label>
+                        <select class="form-control" ng-model="filters.order">
+                            <option value="">Ordenar Por</option>
+                            <option>Mais vistos</option>
+                            <option>Mais recentes</option>
+                        </select>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Buscar" />
+                </form>
+            </div>
+        </div>
+        <div class="row" data-isotope data-item-selector=".animal" data-layout-mode="masonry">
+            <div class="animal col-xs-12 col-sm-6 col-md-4" ng-repeat="pet in pets.resources">
+                <div class="thumbnail">
+                    <img class="img-responsive" ng-src="{{pet.profileImageThumb}}"  alt="{{ pet.name}}">
+                    <div class="caption">
+                        <h4>{{ pet.name}}</h4>
+                        <p>
+                            <a href="#" class="btn btn-primary" role="button">Ver Perfil</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <div class="panel-group filter-side" id="filter-side-group">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <a data-toggle="collapse" data-parent="#filter-side-group" data-target="#filters-basic">Filtros Básicos</a>
+                    </div>
+                </div>
+                <div id="filters-basic" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <form ng-submit="filter()">
+                            <div class="form-group">
+                                <h4>Raça</h4>
+                                <div class="checkbox checkbox-row">
+                                    <label>
+                                        <input type="checkbox" data-icheck ng-model="filters.pureBreed">
+                                        Mostrar apensa puros
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
