@@ -9,7 +9,6 @@
  * Main module of the application.
  */
 angular
-<<<<<<< HEAD
         .module('todasAsPatasApp', [
             'ngAnimate',
             'ngCookies',
@@ -33,27 +32,4 @@ angular
                         redirectTo: '/'
                     });
         });
-=======
-  .module('todasAsPatasApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
->>>>>>> 08036cf9c3d4dca86fec89e56515b969a7569a69
+

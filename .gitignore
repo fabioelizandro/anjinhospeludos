@@ -3,9 +3,4 @@ dist
 .tmp
 .sass-cache
 bower_components
-<<<<<<< HEAD
-/nbproject/private/
 *~
-=======
-/nbproject/private/
->>>>>>> 08036cf9c3d4dca86fec89e56515b969a7569a69
