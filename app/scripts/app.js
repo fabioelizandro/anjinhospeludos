@@ -18,18 +18,21 @@ angular
             'ngTouch'
         ])
         .constant('API_DOMAIN', 'http://todas-as-patas.herokuapp.com')
-        .config(function ($routeProvider) {
+        .config(function ($routeProvider, $locationProvider) {
             $routeProvider
                     .when('/', {
                         templateUrl: 'views/main.html',
-                        controller: 'MainCtrl'
+                        controller: 'MainCtrl',
+                        reloadOnSearch: false
                     })
                     .when('/about', {
                         templateUrl: 'views/about.html',
-                        controller: 'AboutCtrl'
+                        controller: 'AboutCtrl',
+                        reloadOnSearch: false
                     })
                     .otherwise({
                         redirectTo: '/'
                     });
+            $locationProvider.html5Mode(true);
         });
 

@@ -12,8 +12,6 @@ body {
     padding-top: 70px;
 }
 
-
-
 /*Filtro principal*/ 
 .filter-main{
     background-color: $gray-dark;
@@ -21,7 +19,7 @@ body {
     margin: 0px 0px 10px;
     text-align: center;
     .form-group,input[type="submit"]{
-        width: 19%;
+        width: 24%;
     }
     .form-control{
         width: 100%;
@@ -34,7 +32,6 @@ body {
         .form-group, input[type="submit"]{
             width: 100% !important;
         }
-
     }
 }
 
