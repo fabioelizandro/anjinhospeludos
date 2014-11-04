@@ -5,7 +5,9 @@
 
 module.exports = function(config) {
     'use strict';
-
+    
+    process.env['PHANTOMJS_BIN'] = 'node_modules/.bin';
+    
     config.set({
         // enable / disable watching file and executing tests whenever any file changes
         autoWatch: true,
@@ -34,16 +36,17 @@ module.exports = function(config) {
         // Start these browsers, currently available:
         // - Chrome
         // - ChromeCanary
-        // - Firefox
+//         - Firefox
         // - Opera
         // - Safari (only Mac)
         // - PhantomJS
         // - IE (only Windows)
         browsers: [
-            'PhantomJS'
+            'Firefox'
         ],
         // Which plugins to enable
         plugins: [
+            'karma-firefox-launcher',
             'karma-phantomjs-launcher',
             'karma-jasmine'
         ],
