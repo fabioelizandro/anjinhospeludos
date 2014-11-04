@@ -34,7 +34,7 @@ module.exports = function (grunt) {
         },
         heroku: {
             options: {
-                remote: 'git@heroku.com:todasaspatas.git',
+                remote: 'git@heroku.com:todas-as-patas-app.git',
                 branch: 'master'
             }
         }
