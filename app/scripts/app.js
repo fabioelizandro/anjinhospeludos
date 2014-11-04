@@ -15,7 +15,8 @@ angular
             'ngResource',
             'ngRoute',
             'ngSanitize',
-            'ngTouch'
+            'ngTouch',
+            'ui.bootstrap'
         ])
         .constant('API_DOMAIN', 'http://todas-as-patas.herokuapp.com')
         .config(function ($routeProvider, $locationProvider) {
@@ -23,6 +24,11 @@ angular
                     .when('/', {
                         templateUrl: 'views/main.html',
                         controller: 'MainCtrl',
+                        reloadOnSearch: false
+                    })
+                    .when('/:id', {
+                        templateUrl: 'views/pet.html',
+                        controller: 'PetCtrl',
                         reloadOnSearch: false
                     })
                     .when('/about', {
@@ -33,6 +39,6 @@ angular
                     .otherwise({
                         redirectTo: '/'
                     });
-            $locationProvider.html5Mode(true);
+//            $locationProvider.html5Mode(true);
         });
 

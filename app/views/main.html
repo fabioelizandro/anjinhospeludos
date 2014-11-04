@@ -25,25 +25,41 @@
                 </form>
             </div>
         </div>
-        <div class="row">
+        <div class="row" ng-if="loader">
             <div class="col-xs-12 text-center">
-                <i class="fa fa-spin fa-refresh"></i>
+                <i class="fa fa-spin fa-refresh fa-5x"></i>
             </div>
         </div>
-        <div class="row" data-isotope data-item-selector=".animal" data-layout-mode="masonry">
+        <div ng-show="!loader" class="row" data-isotope data-item-selector=".animal" data-layout-mode="masonry">
             <div class="animal col-xs-12 col-sm-6 col-md-4" ng-repeat="pet in pets.resources">
                 <div class="thumbnail">
                     <img class="img-responsive" ng-src="{{pet.profileImageThumb}}"  alt="{{ pet.name}}">
                     <div class="caption">
                         <h4>{{ pet.name}}</h4>
                         <p>
-                            <a href="#" class="btn btn-primary" role="button">Ver Perfil</a>
+                            <a ng-href="{{ ('#/'+pet.id) }}" class="btn btn-primary" >Ver Perfil</a>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <pagination 
+                    scroll-to-top
+                    ng-model="$parent.page" 
+                    ng-change="updatePets()"
+                    total-items="pets.count" 
+                    max-size="5" 
+                    class="pagination-sm" 
+                    boundary-links="true" 
+                    previous-text="Anterior"
+                    next-text="Próximo"
+                    last-text="Último"
+                    first-text="Primeiro"
+                    rotate="false" ></pagination>
+            </div>
+        </div>
     </div>
     <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
         <div class="panel-group filter-side" id="filter-side-group">
