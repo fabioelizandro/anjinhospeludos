@@ -23,7 +23,9 @@
 
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="NavbarCtrl">
             <script type="text/ng-template" id="oauth-buttons.html">
-                
+                <a style="cursor: pointer;" class="logged-out" ng-show="show=='logged-out'" ng-click="login()">{{text}}</a>
+                <a style="cursor: pointer;" class="logged-in"  ng-show="show=='logged-in'"  ng-click="logout()">Sair</a>
+                <a style="cursor: pointer;" class="denied"     ng-show="show=='denied'"      ng-click="login()">Acesso negado. Tente de novo.</a>
             </script>
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -44,14 +46,17 @@
                 </div>
                 <div style="height: 1px;" aria-expanded="false" id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                        <oauth
-                            site="http://todas-as-patas.herokuapp.com"
+                        <li ng-if="user.id">
+                            <a>{{ user.email }}</a>
+                        </li>
+                        <li data-oauth
+                            site="{{API_DOMAIN}}"
                             client-id="1_2hp5nnndor6ss4kwwosgcswc0g8wgw8ck4wggo8g8os4ggck4w"
                             redirect-uri="http://localhost:9000"
-                            profile-uri="http://todas-as-patas.herokuapp.com/api/v1/user/show"
-                            authorize-path="/oauth/v2/auth">
-                        </oauth>    
+                            authorize-path="/oauth/v2/auth"
+                            template="oauth-buttons.html"
+                            text="Entrar">
+                        >    
                         </li>
                     </ul>
                     <form class="navbar-form navbar-right" ng-submit="find()">
@@ -200,6 +205,7 @@
         <script src="http://todas-as-patas.herokuapp.com/js/routing.js?callback=fos.Router.setData"></script>
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.oauth.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/directives/isotope.js"></script>
@@ -211,9 +217,6 @@
         <script src="scripts/services/breed.js"></script>
         <script src="scripts/controllers/navbar.js"></script>
         <script src="scripts/controllers/pet.js"></script>
-        <script src="scripts/controllers/login.js"></script>
-        <script src="scripts/controllers/settings.js"></script>
-        <script src="scripts/controllers/signup.js"></script>
         <script src="scripts/services/user.js"></script>
         <script src="scripts/services/auth.js"></script>
         <!-- endbuild -->

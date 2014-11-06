@@ -17,10 +17,10 @@ angular
             'ngTouch',
             'ui.router',
             'ui.bootstrap',
-            'oauth'
+            'app.oauth'
         ])
         .constant('API_DOMAIN', 'http://todas-as-patas.herokuapp.com')
-        .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
+        .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', '$locationProvider', 'AccessTokenProvider', function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider, AccessTokenProvider) {
                 $stateProvider
                         .state('main', {
                             url: '/',
@@ -30,54 +30,41 @@ angular
                         .state('oauth', {
                             url: '/access_token=:accessToken',
                             template: '',
-                            controller: ['$location', 'AccessToken', function ($location, AccessToken) {
-                                var hash = $location.path().substr(1);
-                                AccessToken.setTokenFromString(hash);
-                                $location.path('/');
-                                $location.replace();
-                            }]
+                            controller: ['$location', 'AccessToken', '$state', '$timeout', function ($location, AccessToken, $state, $timeout) {
+                                    var hash = $location.path().substr(1);
+                                    AccessToken.setTokenFromString(hash);
+                                    $timeout(function () {
+                                        $state.transitionTo('main', {}, {
+                                            reload: true,
+                                            inherit: false,
+                                            notify: true
+                                        });
+                                    });
+                                }]
                         })
                         .state('pet', {
                             url: '/pet/:id',
                             templateUrl: 'views/pet.html',
                             controller: 'PetCtrl'
                         })
-                        .state('login', {
-                            url: '/login',
-                            templateUrl: 'views/login.html',
-                            controller: 'LoginCtrl'
-                        })
-                        .state('signup', {
-                            url: '/signup',
-                            templateUrl: 'views/signup.html',
-                            controller: 'SignupCtrl'
-                        })
-                        .state('settings', {
-                            url: '/settings',
-                            templateUrl: 'views/settings.html',
-                            controller: 'SettingsCtrl',
-                            authenticate: true
-                        })
                         ;
                 $urlRouterProvider.otherwise('/');
                 $httpProvider.interceptors.push('authInterceptor');
             }])
-        .factory('authInterceptor', ['$rootScope', '$q', '$cookieStore', '$location', function ($rootScope, $q, $cookieStore, $location) {
+        .factory('authInterceptor', ['$rootScope', '$q', 'AccessToken', '$location', 'Endpoint', function ($rootScope, $q, AccessToken, $location, Endpoint) {
                 return {
 //                  Add authorization token to headers
                     request: function (config) {
                         config.headers = config.headers || {};
-                        if ($cookieStore.get('token')) {
-                            config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
+                        if (AccessToken.get()) {
+                            config.headers.Authorization = 'Bearer ' + AccessToken.get().access_token;
                         }
                         return config;
                     },
 //                  Intercept 401s and redirect you to login
                     responseError: function (response) {
                         if (response.status === 401) {
-                            $location.path('/#/login');
-//                      remove any stale tokens
-                            $cookieStore.remove('token');
+                            Endpoint.redirect();
                             return $q.reject(response);
                         }
                         else {
@@ -96,12 +83,27 @@ angular
                     }
                 };
             }])
-        .run(['$rootScope', '$location', 'Auth', function ($rootScope, $location, Auth) {
+        .run(['$rootScope', 'Endpoint', 'Auth', 'AccessToken', '$window', '$location', 'User', function ($rootScope, Endpoint, Auth, AccessToken, $window, $location, User) {
+                
+                $rootScope.$on('oauth:logout', function () {
+                    Auth.setCurrentUser({});
+                });
+                $rootScope.$on('oauth:login', function () {
+                    Auth.setCurrentUser(User.get());
+                });
+                
+                
+//              Workaround para resolver problemas de compatibilidade com plygins que utilizam 
+//              o evento de troca do ngRoute
+                $rootScope.$on('$stateChangeSuccess', function () {
+                    $rootScope.$broadcast('$routeChangeSuccess');
+                });
+
 //              Redirect to login if route requires auth and you're not logged in
                 $rootScope.$on('$stateChangeStart', function (event, next) {
                     Auth.isLoggedInAsync(function (loggedIn) {
                         if (next.authenticate && !loggedIn) {
-                            $location.path('/#/login');
+                            Endpoint.redirect();
                         }
                     });
                 });

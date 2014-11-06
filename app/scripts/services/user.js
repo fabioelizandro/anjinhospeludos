@@ -8,22 +8,16 @@
  * Factory in the todasAsPatasApp.
  */
 angular.module('todasAsPatasApp')
-        .factory('User', function ($resource) {
-            return $resource('/api/users/:id/:controller', {
-                id: '@_id'
+        .factory('User', ['$resource', 'API_DOMAIN', function ($resource, API_DOMAIN) {
+            return $resource(API_DOMAIN+'/api/v1/user/:controller', {
+                id: '@id'
             },
             {
-                changePassword: {
-                    method: 'PUT',
-                    params: {
-                        controller: 'password'
-                    }
-                },
                 get: {
                     method: 'GET',
                     params: {
-                        id: 'me'
+                        controller: 'profile'
                     }
                 }
             });
-        });
+        }]);
