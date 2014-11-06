@@ -13,6 +13,7 @@ angular.module('todasAsPatasApp')
                 id: '@id'
             },
             {
-                query: {method: 'GET', isArray: false, params: {controller: 'index'}}
+                query: {method: 'GET', isArray: false, params: {controller: 'index'}},
+                get: {method: 'GET', isArray: false, params: {controller: 'show'}}
             });
         }]);

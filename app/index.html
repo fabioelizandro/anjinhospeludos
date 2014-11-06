@@ -22,6 +22,9 @@
         <![endif]-->
 
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="NavbarCtrl">
+            <script type="text/ng-template" id="oauth-buttons.html">
+                
+            </script>
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -34,12 +37,22 @@
                         <span class="sr-only">Alternar filtros</span>
                         <span class="glyphicon glyphicon-filter glyphicon-"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Todas As Patas</a>
+                    <a class="navbar-brand" ui-sref="main">
+                        <span class="fa fa-paw fa-lg"></span>
+                        Todas as Patas
+                    </a>
                 </div>
                 <div style="height: 1px;" aria-expanded="false" id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/">Inicio</a></li>
-                        <li><a href="/ajuda">Ajuda</a></li>
+                        <li>
+                        <oauth
+                            site="http://todas-as-patas.herokuapp.com"
+                            client-id="1_2hp5nnndor6ss4kwwosgcswc0g8wgw8ck4wggo8g8os4ggck4w"
+                            redirect-uri="http://localhost:9000"
+                            profile-uri="http://todas-as-patas.herokuapp.com/api/v1/user/show"
+                            authorize-path="/oauth/v2/auth">
+                        </oauth>    
+                        </li>
                     </ul>
                     <form class="navbar-form navbar-right" ng-submit="find()">
                         <input class="form-control" placeholder="Buscar..." type="text" ng-model="query">
@@ -48,10 +61,68 @@
             </div>
         </nav>
 
-        <div class="container-fluid">
-            <div ng-view=""></div>
+        <div class="container-fluid container-view">
+            <div ui-view=""></div>
         </div>
 
+        <footer>
+            <div class="container-fluid">
+                <div class="footer-holder">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4">
+                            <p>© 2014 Todasaspatas.com</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-8">
+                            <div class="pull-right">
+                                <ul class='footer-links inline list-inline'>
+                                    <li>
+                                        <a ui-sref="main">Sobre</a>
+                                    </li>
+                                    <li>
+                                        <a ui-sref="main">Privacidade</a>
+                                    </li>
+                                    <li>
+                                        <a ui-sref="main">Termos de uso</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://github.com/fabioelizandro/todas-as-patas-app" target="_blank">Código fonte</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://github.com/fabioelizandro/todas-as-patas-app/issues" target="_blank">Reportar Bug</a>
+                                    </li>
+                                </ul>
+                                <ul class='footer-social-links inline list-inline pull-right'>
+                                    <li>
+                                        <a href="https://www.facebook.com/" class="fa-stack fa-lg facebook">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://plus.google.com" class="fa-stack fa-lg google">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-google fa-stack-1x fa-inverse"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://instagram.com/" class="fa-stack fa-lg instagram">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://github.com/fabioelizandro/todas-as-patas-app" class="fa-stack fa-lg github" >
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-github fa-stack-2x fa-inverse"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
         <script>
@@ -119,6 +190,9 @@
         <script src="bower_components/jquery-icheck/icheck.min.js"></script>
         <script src="bower_components/underscore/underscore.js"></script>
         <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/ngstorage/ngStorage.js"></script>
+        <script src="bower_components/oauth-ng/dist/oauth-ng.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -128,7 +202,6 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
         <script src="scripts/directives/isotope.js"></script>
         <script src="scripts/directives/icheck.js"></script>
         <script src="scripts/directives/offcanvas.js"></script>
@@ -138,6 +211,11 @@
         <script src="scripts/services/breed.js"></script>
         <script src="scripts/controllers/navbar.js"></script>
         <script src="scripts/controllers/pet.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/settings.js"></script>
+        <script src="scripts/controllers/signup.js"></script>
+        <script src="scripts/services/user.js"></script>
+        <script src="scripts/services/auth.js"></script>
         <!-- endbuild -->
     </body>
 </html>

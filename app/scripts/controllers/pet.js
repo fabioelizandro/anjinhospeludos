@@ -8,7 +8,6 @@
  * Controller of the todasAsPatasApp
  */
 angular.module('todasAsPatasApp')
-        .controller('PetCtrl', ['$scope', '$routeParams', 'Pet', function ($scope, $routeParams, Pet) {
-            $scope.pet = Pet.get({id : $routeParams.id});
-            console.log($scope.pet);
+        .controller('PetCtrl', ['$scope', '$stateParams', 'Pet', function ($scope, $stateParams, Pet) {
+            $scope.pet = Pet.get({id : $stateParams.id});
         }]);

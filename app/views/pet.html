@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row pet-header">
     <div class="col-xs-12">
         <div class="pull-left">
             <button class="btn btn-primary btn-lg">
@@ -16,5 +16,112 @@
             </button>
         </div>
         <div class="clear-fix"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-6" >
+        <carousel interval="3000" disable-animation="true">
+            <slide ng-repeat="slide in pet.images" >
+                <img ng-src="{{slide.image}}" style="margin:auto; height: 320px">
+            </slide>
+        </carousel>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="pet-header-info">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="pull-left">
+                        {{ pet.name}}
+                    </h1>
+                    <a class="hidden-xs btn btn-link pull-right" href="/search?species_id=1&amp;zip_code=78703">
+                        <i class="fa fa-angle-double-left"></i>
+                        Voltar aos resultados
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="well">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4">
+                                <strong>
+                                    <i class="fa fa-map-marker fa-lg"></i>
+                                    Localozação
+                                </strong>
+                                <div class="pet-info-holder">{{ pet.organization.address.city.name}}</div>
+                                <strong>
+                                    <i class="fa fa-tag fa-lg"></i>
+                                    Identificador
+                                </strong>
+                                <div class="pet-info-holder">{{ pet.id}}</div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4">
+                                <strong>
+                                    <i class="fa fa-tag fa-lg"></i>
+                                    Endereço
+                                </strong>
+                                <div class="pet-info-holder">{{ pet.organization.address.city.name + ', ' + pet.organization.address.city.state.acronym}}</div>
+                                <div class="pet-info-holder">CEP {{ pet.organization.address.postalCode}}</div>
+                                <div class="pet-info-holder">Rua {{ pet.organization.address.street}}</div>
+                                <div class="pet-info-holder">Número {{ pet.organization.address.number}}</div>
+                                <div class="pet-info-holder">Bairro {{ pet.organization.address.district}}</div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4">
+                                <button class="btn btn-default">
+                                    <i class="fa fa-comment"></i>
+                                    Enviar Pergunta
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-7">
+                    <h1>História {{ ((pet.genderId === 1) ? 'do' : 'da') + ' ' + pet.name}}</h1>
+                    <div ng-bind-html="pet.history" ng-if="pet.history"></div>
+                    <div ng-if="!pet.history">
+                        A Organização não disponibilizou nenhuma informação adicional, 
+                        caso queira saber mais sobre {{ ((pet.genderId === 1) ? 'o' : 'a') + ' ' + pet.name}} <a >envie uma 
+                            pergunta</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-5">
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <th colspan="2" class="text-center">
+                                Caracteristicas
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>Raça(s)</td>
+                            <td>
+                                <ul class="pet-breed-list">
+                                    <li ng-repeat="breed in pet.breeds">
+                                        <span class="label label-info" >{{ breed.name}}</span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Local</td>
+                            <td>{{ pet.organization.address.city.name + ', ' + pet.organization.address.city.state.acronym}}</td>
+                        </tr>
+                        <tr>
+                            <td>Gênero</td>
+                            <td>{{ pet.gender}}</td>
+                        </tr>
+                        <tr>
+                            <td>Faixa de idade</td>
+                            <td>{{ pet.age}}</td>
+                        </tr>
+                        <tr>
+                            <td>Tamnho</td>
+                            <td>{{ pet.size}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

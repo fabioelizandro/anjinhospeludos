@@ -37,7 +37,7 @@
                     <div class="caption">
                         <h4>{{ pet.name}}</h4>
                         <p>
-                            <a ng-href="{{ ('#/'+pet.id) }}" class="btn btn-primary" >Ver Perfil</a>
+                            <a ui-sref="pet({id: pet.id})" class="btn btn-primary" >Ver Perfil</a>
                         </p>
                     </div>
                 </div>
