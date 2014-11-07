@@ -23,9 +23,19 @@ angular
         .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', '$locationProvider', 'AccessTokenProvider', function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider, AccessTokenProvider) {
                 $stateProvider
                         .state('main', {
-                            url: '/',
+                            url: '/?query',
                             templateUrl: 'views/main.html',
                             controller: 'MainCtrl'
+                        })
+                        .state('profile', {
+                            url: '/perfil',
+                            templateUrl: 'views/profile.html',
+                            controller: 'ProfileCtrl'
+                        })
+                        .state('favorite', {
+                            url: '/favoritos',
+                            templateUrl: 'views/favorite.html',
+                            controller: 'FavoriteCtrl'
                         })
                         .state('oauth', {
                             url: '/access_token=:accessToken',
@@ -47,7 +57,13 @@ angular
                             templateUrl: 'views/pet.html',
                             controller: 'PetCtrl'
                         })
+                        .state('organization', {
+                            url: '/organizacoes',
+                            templateUrl: 'views/organization.html',
+                            controller: 'OrganizationCtrl'
+                        })
                         ;
+
                 $urlRouterProvider.otherwise('/');
                 $httpProvider.interceptors.push('authInterceptor');
             }])
@@ -64,6 +80,7 @@ angular
 //                  Intercept 401s and redirect you to login
                     responseError: function (response) {
                         if (response.status === 401) {
+                            AccessToken.destroy();
                             Endpoint.redirect();
                             return $q.reject(response);
                         }

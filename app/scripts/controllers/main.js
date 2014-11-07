@@ -8,8 +8,9 @@
  * Controller of the todasAsPatasApp
  */
 angular.module('todasAsPatasApp')
-        .controller('MainCtrl', ['$scope', 'Pet', 'Breed', 'Enum', '$location', function ($scope, Pet, Breed, Enum, $location) {
+        .controller('MainCtrl', ['$scope', 'Pet', 'Breed', 'Enum', '$location', 'Auth', 'User', function ($scope, Pet, Breed, Enum, $location, Auth, User) {
                 $scope.loader = false;
+                $scope.alerts = [];
                 $scope.page = $location.search().page || 1;
                 $scope.limit = $location.search().limit || 10;
                 $scope.enums = Enum.get();
@@ -22,6 +23,84 @@ angular.module('todasAsPatasApp')
                 $scope.gender = Enum.getItem('gender', $location.search().gender) || null;
                 $scope.age = Enum.getItem('age', $location.search().age) || null;
                 $scope.query = $location.search().query || null;
+                $scope.user = Auth.getCurrentUser();
+                $scope.isLoggedIn = Auth.isLoggedIn;
+                
+                /**
+                 * Adiciona um alert
+                 */
+                $scope.addAlert = function(type, message){
+                    $scope.alerts.push({type: type, message: message});
+                };
+                
+                /**
+                 * Remove um alert
+                 */
+                $scope.removeAlert = function(index){
+                    $scope.alerts.splice(index, 1);
+                };
+                
+                /**
+                 * Verifica se o pet está favoritado
+                 */
+                $scope.isFavorited = function(pet){
+                    return _.find($scope.user.favoritePets, {id: pet.id});
+                };
+                
+                /**
+                 * Remove um pet da lista de favoritos fo usuario
+                 */
+                $scope.removeFavoritePet = function (newPet) {
+                    if (!$scope.isFavorited(newPet)) {
+                        return;
+                    }
+                    newPet.favoritedLoader = true;
+                    var params = {
+                        todasaspatas_apibundle_favorite_pet: {
+                            favoritePets: []
+                        }
+                    };
+                    
+                    var pet = _.find($scope.user.favoritePets, {id: newPet.id});
+                    var index = $scope.user.favoritePets.indexOf(pet);
+                    $scope.user.favoritePets.splice(index, 1);
+                    angular.forEach($scope.user.favoritePets, function (pet, index) {
+                        params.todasaspatas_apibundle_favorite_pet.favoritePets[index] = pet.id;
+                    });
+                    User.updatePets(params, function (data) {
+                        var pets = [];
+                        angular.forEach(data.favoritePets, function(value){
+                            pets.push(value);
+                        });
+                        data.favoritePets = pets;
+                        
+                        newPet.favoritedLoader = undefined;
+                        $scope.addAlert('success', 'Desfavoritado com sucesso!');
+                    });
+                };
+                
+                /**
+                 * Favorita um pet
+                 */
+                $scope.addFavoritePet = function (pet) {
+                    if ($scope.isFavorited(pet)) {
+                        return;
+                    }
+                    pet.favoritedLoader = true;
+                    var params = {
+                        todasaspatas_apibundle_favorite_pet: {
+                            favoritePets: []
+                        }
+                    };
+                    $scope.user.favoritePets.push(angular.copy(pet));
+                    angular.forEach($scope.user.favoritePets, function (value, index) {
+                        params.todasaspatas_apibundle_favorite_pet.favoritePets[index] = value.id;
+                    });
+                    User.updatePets(params, function (data) {
+                        pet.favoritedLoader = undefined;
+                        $scope.addAlert('success', 'Favoritado com sucesso!');
+                    });
+                };
                 
                 /**
                  * Limpa todos os filtros

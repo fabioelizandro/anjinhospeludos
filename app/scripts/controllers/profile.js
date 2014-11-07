@@ -2,15 +2,14 @@
 
 /**
  * @ngdoc function
- * @name todasAsPatasApp.controller:PetCtrl
+ * @name todasAsPatasApp.controller:FavoritepetCtrl
  * @description
- * # PetCtrl
+ * # FavoritepetCtrl
  * Controller of the todasAsPatasApp
  */
 angular.module('todasAsPatasApp')
-        .controller('PetCtrl', ['$scope', '$stateParams', 'Pet', 'Auth', 'User', function ($scope, $stateParams, Pet, Auth, User) {
+        .controller('ProfileCtrl', ['$scope', 'Auth', 'User', function ($scope, Auth, User) {
                 $scope.alerts = [];
-                $scope.pet = Pet.get({id: $stateParams.id});
                 $scope.user = Auth.getCurrentUser();
                 $scope.isLoggedIn = Auth.isLoggedIn;
 
@@ -36,7 +35,7 @@ angular.module('todasAsPatasApp')
                             favoritePets: []
                         }
                     };
-                    
+
                     var pet = _.find($scope.user.favoritePets, {id: $scope.pet.id});
                     var index = $scope.user.favoritePets.indexOf(pet);
                     $scope.user.favoritePets.splice(index, 1);
@@ -45,12 +44,13 @@ angular.module('todasAsPatasApp')
                     });
                     User.updatePets(params, function (data) {
                         var pets = [];
-                        angular.forEach(data.favoritePets, function(value){
+                        angular.forEach(data.favoritePets, function (value) {
                             pets.push(value);
                         });
                         data.favoritePets = pets;
-                        
+
                         $scope.pet.favoritedLoader = undefined;
+                        $scope.user = data;
                         $scope.addAlert('success', 'Desfavoritado com sucesso!');
                     });
                 };
@@ -65,13 +65,14 @@ angular.module('todasAsPatasApp')
                             favoritePets: []
                         }
                     };
-                    
+
                     $scope.user.favoritePets.push(angular.copy($scope.pet));
                     angular.forEach($scope.user.favoritePets, function (pet, index) {
                         params.todasaspatas_apibundle_favorite_pet.favoritePets[index] = pet.id;
                     });
                     User.updatePets(params, function (data) {
                         $scope.pet.favoritedLoader = undefined;
+                        $scope.user = data;
                         $scope.addAlert('success', 'Favoritado com sucesso!');
                     });
                 };

@@ -39,16 +39,21 @@
                         <span class="sr-only">Alternar filtros</span>
                         <span class="glyphicon glyphicon-filter glyphicon-"></span>
                     </button>
-                    <a class="navbar-brand" ui-sref="main">
+                    <a class="navbar-brand" ui-sref="main({query: null})">
                         <span class="fa fa-paw fa-lg"></span>
                         Todas as Patas
                     </a>
                 </div>
                 <div style="height: 1px;" aria-expanded="false" id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li ng-if="user.id">
-                            <a>{{ user.email }}</a>
+                        <li class="dropdown" on-toggle="toggled(open)" ng-if="user.id">
+                            <a style="cursor: pointer;" class="dropdown-toggle">{{ user.email}} <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a ui-sref="profile">Perfil</a></li>
+                                <li><a ui-sref="favorite">Favoritos</a></li>
+                            </ul>
                         </li>
+
                         <li data-oauth
                             site="{{API_DOMAIN}}"
                             client-id="1_2hp5nnndor6ss4kwwosgcswc0g8wgw8ck4wggo8g8os4ggck4w"
@@ -56,7 +61,7 @@
                             authorize-path="/oauth/v2/auth"
                             template="oauth-buttons.html"
                             text="Entrar">
-                        >    
+                            >    
                         </li>
                     </ul>
                     <form class="navbar-form navbar-right" ng-submit="find()">
@@ -80,6 +85,9 @@
                         <div class="col-xs-12 col-sm-8">
                             <div class="pull-right">
                                 <ul class='footer-links inline list-inline'>
+                                    <li>
+                                        <a ui-sref="organization">Organizações</a>
+                                    </li>
                                     <li>
                                         <a ui-sref="main">Sobre</a>
                                     </li>
@@ -219,6 +227,10 @@
         <script src="scripts/controllers/pet.js"></script>
         <script src="scripts/services/user.js"></script>
         <script src="scripts/services/auth.js"></script>
+        <script src="scripts/controllers/organization.js"></script>
+        <script src="scripts/services/organization.js"></script>
+        <script src="scripts/controllers/profile.js"></script>
+        <script src="scripts/controllers/favorite.js"></script>
         <!-- endbuild -->
     </body>
 </html>

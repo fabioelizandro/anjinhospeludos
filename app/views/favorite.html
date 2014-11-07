@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-xs-12">
+        <ol class="breadcrumb">
+            <li><a ui-sref="main({query: null})">Pets</a></li>
+            <li class="active">Favoritos</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="animal col-xs-12 col-sm-6 col-md-4" ng-repeat="pet in user.favoritePets">
+                <div class="thumbnail">
+                    <img class="img-responsive" ng-src="{{pet.profileImageThumb}}"  alt="{{ pet.name}}">
+                    <div class="caption text-center">
+                        <h4>{{ pet.name}}</h4>
+                        <p>
+                            <a ui-sref="pet({id: pet.id})" class="btn btn-primary" >Ver Perfil</a>
+                            <a class="btn btn-danger" ng-click="removeFavoritePet(pet)" ng-if="(isLoggedIn() && isFavorited(pet))">
+                                <i ng-class="{'fa-refresh fa-spin': pet.favoritedLoader, 'fa-heart-o': !pet.favoritedLoader, 'fa' : true}"></i>
+                                Desfavoritar
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

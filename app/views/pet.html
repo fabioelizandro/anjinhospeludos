@@ -7,11 +7,15 @@
             </button>
         </div>
         <div class="pull-right">
-            <button class="btn btn-danger btn-lg">
-                <i class="fa fa-heart"></i>
-                Adicioar aos favoritos
+            <button class="btn btn-danger btn-lg" ng-if="(isLoggedIn() && !isFavorited())" ng-click="addFavoritePet()">
+                <i ng-class="{'fa-refresh fa-spin': pet.favoritedLoader, 'fa-heart': !pet.favoritedLoader, 'fa' : true}" ></i>
+                Adicionar aos favoritos
             </button>
-            <button class="btn btn-success btn-lg">
+            <button class="btn btn-danger btn-lg" ng-if="(isLoggedIn() && isFavorited())" ng-click="removeFavoritePet()">
+                <i ng-class="{'fa-refresh fa-spin': pet.favoritedLoader, 'fa-heart-o': !pet.favoritedLoader, 'fa' : true}" ></i>
+                Remover dos favoritos
+            </button>
+            <button class="btn btn-success btn-lg" ng-disabled="!isLoggedIn()">
                 Adotar
             </button>
         </div>

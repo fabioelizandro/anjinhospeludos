@@ -18,6 +18,12 @@ angular.module('todasAsPatasApp')
                     params: {
                         controller: 'profile'
                     }
+                },
+                updatePets: {
+                    method: 'POST',
+                    params: {
+                        controller: 'favorite-pet'
+                    }
                 }
             });
         }]);

@@ -19,10 +19,12 @@ angular.module('todasAsPatasApp')
                 $scope.$on('oauth:login', function () {
                     $scope.user = User.get();
                 });
-                
+
                 $scope.find = function () {
-                    $location.search('query', $scope.query);
-                    $location.path('/');
-                    $state.reload();
+                    $state.go('main', {query: $scope.query});
                 };
+                
+                $scope.$on('$stateChangeSuccess', function () {
+                    $scope.query = $location.search().query || '';
+                });
             }]);
