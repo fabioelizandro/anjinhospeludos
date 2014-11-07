@@ -1,0 +1,89 @@
+<div class="row">
+    <div class="col-xs-12">
+        <ol class="breadcrumb">
+            <li><a ui-sref="main({query: null})">Pets</a></li>
+            <li class="active">Ouvintes</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <form class="form-horizontal" role="form" name="form" ng-submit="createPetListener()">
+            <div class="form-group">
+                <label for="typeId" class="col-sm-2 control-label">Tipo de Pet</label>
+                <div class="col-sm-10">
+                    <select  class="form-control" id="typeId" ng-model="newPetListener.typeId" name="typeId" ng-options="type.id as type.description for type in enums.type" required ng-change="updateBreeds()"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="breeds" class="col-sm-2 control-label">Raça(s)</label>
+                <div class="col-sm-10">
+                    <select multiple class="form-control" id="breeds" ng-model="newPetListener.breeds" name="breeds" ng-options="breed.id as breed.name for breed in breeds"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="genderId" class="col-sm-2 control-label">Gênero</label>
+                <div class="col-sm-10">
+                    <select  class="form-control" id="genderId" ng-model="newPetListener.genderId" name="genderId" ng-options="gender.id as gender.description for gender in enums.gender">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sizeId" class="col-sm-2 control-label">Tamanho</label>
+                <div class="col-sm-10">
+                    <select  class="form-control" id="sizeId" ng-model="newPetListener.sizeId" name="sizeId" ng-options="size.id as size.description for size in enums.size">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ageId" class="col-sm-2 control-label">Faixa de idade</label>
+                <div class="col-sm-10">
+                    <select  class="form-control" id="ageId" ng-model="newPetListener.ageId" name="ageId" ng-options="age.id as age.description for age in enums.age">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid || loader">{{ (loader)? 'Criando...' : 'Criar novo ouvinte' }}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="row" masonry>
+            <div class="masonry-brick col-xs-12 col-sm-6" ng-repeat="petListener in petListeners track by petListener.id">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <table class="table table-bordered table-striped">
+                            <tr>
+                                <td>Raça(s)</td>
+                                <td>
+                                    <ul class="pet-breed-list">
+                                        <li ng-repeat="breed in petListener.breeds">
+                                            <span class="label label-info" >{{ breed.name}}</span>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Gênero</td>
+                                <td>{{ petListener.gender}}</td>
+                            </tr>
+                            <tr>
+                                <td>Faixa de idade</td>
+                                <td>{{ petListener.age}}</td>
+                            </tr>
+                            <tr>
+                                <td>Tamnho</td>
+                                <td>{{ petListener.size}}</td>
+                            </tr>
+                        </table>
+                        <p>
+                            <button class="btn btn-danger btn-block" ng-disabled="petListener.loader" ng-click="removePetListener($index)">{{ (petListener.loader)? 'Removendo...' : 'Remover' }}</button> 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

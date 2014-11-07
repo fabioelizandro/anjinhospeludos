@@ -17,7 +17,8 @@ angular
             'ngTouch',
             'ui.router',
             'ui.bootstrap',
-            'app.oauth'
+            'app.oauth',
+            'wu.masonry'
         ])
         .constant('API_DOMAIN', 'http://todas-as-patas.herokuapp.com')
         .constant('CLIENT_ID', '1_2hp5nnndor6ss4kwwosgcswc0g8wgw8ck4wggo8g8os4ggck4w')
@@ -33,12 +34,19 @@ angular
                         .state('profile', {
                             url: '/perfil',
                             templateUrl: 'views/profile.html',
-                            controller: 'ProfileCtrl'
+                            controller: 'ProfileCtrl',
+                            authenticate: true
                         })
                         .state('favorite', {
                             url: '/favoritos',
                             templateUrl: 'views/favorite.html',
                             controller: 'FavoriteCtrl'
+                        })
+                        .state('petListener', {
+                            url: '/ouvintes',
+                            templateUrl: 'views/petListener.html',
+                            controller: 'PetListenerCtrl',
+                            authenticate: true
                         })
                         .state('oauth', {
                             url: '/access_token=:accessToken',

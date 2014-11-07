@@ -13,14 +13,13 @@
     "angular-animate": "1.2.16",
     "angular-touch": "1.2.16",
     "angular-route": "1.2.16",
-    "isotope": "~2.0.0",
     "imagesloaded": "~3.1.8",
-    "jquery-icheck": "~1.0.2",
     "font-awesome": ">=4.1.0",
     "underscore": "~1.7.0",
     "angular-bootstrap": "~0.11.2",
     "angular-ui-router": "~0.2.11",
-    "oauth-ng": "~0.3.1"
+    "oauth-ng": "~0.3.1",
+    "angular-masonry": "~0.9.1"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",

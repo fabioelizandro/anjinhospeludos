@@ -8,8 +8,8 @@
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <div class="row">
-            <div class="animal col-xs-12 col-sm-6 col-md-4" ng-repeat="pet in user.favoritePets">
+        <div class="row" masonry>
+            <div class="animal masonry-brick col-xs-12 col-sm-6 col-md-4" ng-repeat="pet in user.favoritePets">
                 <div class="thumbnail">
                     <img class="img-responsive" ng-src="{{pet.profileImageThumb}}"  alt="{{ pet.name}}">
                     <div class="caption text-center">
