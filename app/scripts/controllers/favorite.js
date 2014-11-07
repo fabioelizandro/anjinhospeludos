@@ -31,7 +31,7 @@ angular.module('todasAsPatasApp')
                     }
                     newPet.favoritedLoader = true;
                     var params = {
-                        todasaspatas_apibundle_favorite_pet: {
+                        'todasaspatas_apibundle_favorite_pet': {
                             favoritePets: []
                         }
                     };

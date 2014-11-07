@@ -15,7 +15,7 @@
                 <i ng-class="{'fa-refresh fa-spin': pet.favoritedLoader, 'fa-heart-o': !pet.favoritedLoader, 'fa' : true}" ></i>
                 Remover dos favoritos
             </button>
-            <button class="btn btn-success btn-lg" ng-disabled="!isLoggedIn()">
+            <button class="btn btn-success btn-lg" ng-disabled="!isLoggedIn()" ng-click="openAdoption()">
                 Adotar
             </button>
         </div>
@@ -71,7 +71,7 @@
                                 <div class="pet-info-holder">Bairro {{ pet.organization.address.district}}</div>
                             </div>
                             <div class="col-xs-12 col-sm-4">
-                                <button class="btn btn-default">
+                                <button class="btn btn-default" ng-click="openQuestion()">
                                     <i class="fa fa-comment"></i>
                                     Enviar Pergunta
                                 </button>
@@ -86,7 +86,7 @@
                     <div ng-bind-html="pet.history" ng-if="pet.history"></div>
                     <div ng-if="!pet.history">
                         A Organização não disponibilizou nenhuma informação adicional, 
-                        caso queira saber mais sobre {{ ((pet.genderId === 1) ? 'o' : 'a') + ' ' + pet.name}} <a >envie uma 
+                        caso queira saber mais sobre {{ ((pet.genderId === 1) ? 'o' : 'a') + ' ' + pet.name}} <a ng-click="openQuestion()" style="cursor: pointer;">envie uma 
                             pergunta</a>
                     </div>
                 </div>
@@ -129,3 +129,80 @@
         </div>
     </div>
 </div>
+<script type="text/ng-template" id="questionModal.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click='cancel()'><span>&times;</span><span class="sr-only">Close</span></button>
+        <h3 class="modal-title">Faça uma pergunta sobre {{ ((pet.genderId === 1) ? 'o' : 'a') + ' ' + pet.name}}</h3>
+    </div>
+    <form role="form" novalidate ng-submit="send()" name='qform'>
+        <div class="modal-body">
+            <div alert type="{{alert.type}}" close="removeAlert($index)" ng-repeat="alert in alerts">
+                {{alert.message}}
+            </div>
+            <div class="form-group">
+                <label for="questionTitle">Assunto</label>
+                <input name="subject" ng-model='subject' type="text" class="form-control" id="questionTitle" required >
+                <div ng-show="qform.subject.$dirty && qform.subject.$invalid" class="help-block">
+                    <span ng-show="qform.subject.$error.required">Diga qual o assunto da sua pergunta.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="questionMessage">Mensagem</label>
+                <textarea name="message" ng-model="message" class="form-control" id="questionMessage" required></textarea>
+                <div ng-show="qform.message.$dirty && qform.message.$invalid" class="help-block">
+                    <span ng-show="qform.message.$error.required">O que você quer perguntar?.</span>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary btn-lg" ng-disabled="qform.$invalid" ng-if="!sended" >{{ (sending)? 'Enviando' : 'Enviar'; }}</button>
+            <button type="button" class="btn btn-success btn-lg" ng-if="sended" ng-click="cancel()">Fechar</button>
+        </div>
+    </form>
+</script>
+<script type="text/ng-template" id="adoptionModal.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click='cancel()'><span>&times;</span><span class="sr-only">Close</span></button>
+        <h3 class="modal-title">
+            Solicite a adoçao {{ ((pet.genderId === 1) ? 'de' : 'da') + ' ' + pet.name}}
+        </h3>
+        <small>
+            deixe uma mensagem ou entre em contato com a orgainzação
+        </small>
+    </div>
+    <form role="form" novalidate ng-submit="send()" name='aform'>
+        <div class="modal-body">
+            <div alert type="{{alert.type}}" close="removeAlert($index)" ng-repeat="alert in alerts">
+                {{alert.message}}
+            </div>
+            <h4>Contato</h4>
+            <hr>
+            <div>{{pet.organization.name}}</div>
+            <div>{{pet.organization.phone}}</div>
+            <div>{{ pet.organization.address.number}}, {{ pet.organization.address.street}}</div>
+            <div>{{ pet.organization.address.city.name + ', ' + pet.organization.address.city.state.acronym}}</div>
+            <div>{{ pet.organization.address.postalCode}}</div>
+            <br>
+            <h4>Mensagem</h4>
+            <hr>
+            <div class="form-group">
+                <label for="adoptionTitle">Assunto</label>
+                <input name="subject" ng-model='subject' type="text" class="form-control" id="adoptionTitle" required >
+                <div ng-show="aform.subject.$dirty && aform.subject.$invalid" class="help-block">
+                    <span ng-show="aform.subject.$error.required">De um título para sua menssagem.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="adoptionMessage">Mensagem</label>
+                <textarea name="message" ng-model="message" class="form-control" id="adoptionMessage" required></textarea>
+                <div ng-show="aform.message.$dirty && aform.message.$invalid" class="help-block">
+                    <span ng-show="aform.message.$error.required">Deixe uma mensagem para a organização.</span>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary btn-lg" ng-disabled="aform.$invalid" ng-if="!sended" >{{ (sending)? 'Enviando' : 'Enviar'; }}</button>
+            <button type="button" class="btn btn-success btn-lg" ng-if="sended" ng-click="cancel()">Fechar</button>
+        </div>
+    </form>
+</script>

@@ -24,13 +24,15 @@ angular.module('todasAsPatasApp')
                     getCurrentUser: function () {
                         return currentUser;
                     },
+                    
                     /**
                      * Gets all available info on authenticated user
                      *
                      * @return {Object} user
                      */
                     setCurrentUser: function (user) {
-                        return currentUser = user;
+                        currentUser = user;
+                        return currentUser;
                     },
                     
                     /**

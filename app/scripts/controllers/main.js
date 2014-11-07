@@ -41,7 +41,7 @@ angular.module('todasAsPatasApp')
                 };
                 
                 /**
-                 * Verifica se o pet está favoritado
+                 * Verifica se o pet está favoritado 
                  */
                 $scope.isFavorited = function(pet){
                     return _.find($scope.user.favoritePets, {id: pet.id});
@@ -56,7 +56,7 @@ angular.module('todasAsPatasApp')
                     }
                     newPet.favoritedLoader = true;
                     var params = {
-                        todasaspatas_apibundle_favorite_pet: {
+                        'todasaspatas_apibundle_favorite_pet': {
                             favoritePets: []
                         }
                     };
@@ -88,7 +88,7 @@ angular.module('todasAsPatasApp')
                     }
                     pet.favoritedLoader = true;
                     var params = {
-                        todasaspatas_apibundle_favorite_pet: {
+                        'todasaspatas_apibundle_favorite_pet': {
                             favoritePets: []
                         }
                     };

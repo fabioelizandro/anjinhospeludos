@@ -154,8 +154,8 @@ angular.module('app.oauth.accessToken', ['ngCookies'])
                 var time = (new Date(service.token.expires_at)) - (new Date());
                 if (time) {
                     $interval(function () {
-                        $rootScope.$broadcast('oauth:expired', service.token)
-                    }, time, 1)
+                        $rootScope.$broadcast('oauth:expired', service.token);
+                    }, time, 1);
                 }
             };
 
