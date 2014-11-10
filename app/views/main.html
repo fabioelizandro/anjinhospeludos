@@ -33,7 +33,7 @@
         <div ng-show="!loader" class="row" masonry>
             <div class="animal masonry-brick col-xs-12 col-sm-6 col-md-4" ng-repeat="pet in pets.resources">
                 <div class="thumbnail">
-                    <img class="img-responsive" ng-src="{{pet.profileImageThumb}}"  alt="{{ pet.name}}">
+                    <img class="img-responsive" ng-src="{{ pet.profileImage }}"  alt="{{ pet.name}}" style="width: 100% !important; height: auto !important;">
                     <div class="caption text-center">
                         <h4>{{ pet.name}}</h4>
                         <p>
@@ -55,7 +55,7 @@
             <div class="col-xs-12 text-center">
                 <pagination 
                     scroll-to-top
-                    ng-model="$parent.page" 
+                    ng-model="page" 
                     ng-change="updatePets()"
                     total-items="pets.count" 
                     max-size="5" 
@@ -65,7 +65,7 @@
                     next-text="Próximo"
                     last-text="Último"
                     first-text="Primeiro"
-                    rotate="false" ></pagination>
+                    rotate="true" ></pagination>
             </div>
         </div>
     </div>
@@ -74,32 +74,31 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <div class="panel-title">
-                        <a data-toggle="collapse" data-parent="#filter-side-group" data-target="#filters-basic">Filtros Básicos</a>
+                        <span>Filtros Básicos</span>
                     </div>
                 </div>
-                <div id="filters-basic" class="panel-collapse collapse in">
+                <div id="filters-basic" >
                     <div class="panel-body">
                         <form ng-submit="filter()">
                             <div class="form-group">
                                 <label class="sr-only" for="main-size">Tamanho</label>
-                                <select  class="form-control" id="main-size"  ng-model="size" name="size" ng-options="size.description for size in enums.size">
+                                <select ng-change="updatePets()" class="form-control" id="main-size"  ng-model="size" name="size" ng-options="size.description for size in enums.size">
                                     <option value="">Tamanho</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="main-age">Idade</label>
-                                <select  class="form-control" id="main-age"  ng-model="age" name="age" ng-options="age.description for age in enums.age">
+                                <select ng-change="updatePets()" class="form-control" id="main-age"  ng-model="age" name="age" ng-options="age.description for age in enums.age">
                                     <option value="">Idade</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="main-gender">Gênero</label>
-                                <select  class="form-control" id="main-gender"  ng-model="gender" name="gender" ng-options="gender.description for gender in enums.gender">
+                                <select ng-change="updatePets()" class="form-control" id="main-gender"  ng-model="gender" name="gender" ng-options="gender.description for gender in enums.gender">
                                     <option value="">Gênero</option>
                                 </select>
                             </div>
-                            <input type="submit" class="btn btn-primary btn-block" value="Buscar" />
-                            <button type="button" class="btn btn-default btn-block" ng-click="clearFilters()">Limpar filtros</button>
+                            <button type="button" class="btn btn-warning btn-block" ng-click="clearFilters()">Limpar filtros</button>
                         </form>
                     </div>
                 </div>

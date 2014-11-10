@@ -20,8 +20,14 @@ angular.module('todasAsPatasApp')
                         page: $scope.page
                     };
                     $scope.loader = true;
-                    $scope.organizations = Organization.query(params, function(){
+                    Organization.query(params, function(data){
                         $scope.loader = false;
+                        if ($scope.organizations.count === undefined) {
+                            $scope.organizations = data;
+                        }else{
+                            $scope.organizations.resources = data.resources;
+                            $scope.organizations.count = data.count;
+                        }
                     });
                 };
                 

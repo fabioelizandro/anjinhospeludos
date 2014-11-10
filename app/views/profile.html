@@ -6,8 +6,36 @@
         </ol>
     </div>
 </div>
+<div alert type="{{alert.type}}" close="removeAlert($index)" ng-repeat="alert in alerts">
+    {{alert.message}}
+</div>
 <div class="row">
-    <div class="col-xs-12">
-        Aqui vai o form =) 
+    <div class="col-xs-12 col-sm-8">
+        <form role="form" name="formProfile" ng-submit="updateProfile()" novalidate style="margin-bottom: 20px;">
+            <div class="form-group">
+                <label for="username">Usuário</label>
+                <input type="text" class="form-control" id="username" ng-model="user.username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" id="email" ng-model="user.email" required>
+            </div>
+            <div class="form-group">
+                <label for="firstName">Primeiro Nome</label>
+                <input type="text" class="form-control" id="firstName" ng-model="user.firstName" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Sobrenome</label>
+                <input type="text" class="form-control" id="lastName" ng-model="user.lastName" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Telefone</label>
+                <input type="text" class="form-control" id="phone" ng-model="user.phone" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block hidden-sm hidden-md hidden-lg" ng-disabled="formProfile.$invalid || loader">{{ (!loader)? 'Atualizar Perfil' : 'Atualizando ...' }}</button>
+            <button type="submit" class="btn btn-primary hidden-xs" ng-disabled="formProfile.$invalid || loader">{{ (!loader)? 'Atualizar Perfil' : 'Atualizando ...' }}</button>
+            <a  class="btn btn-warning btn-block hidden-sm hidden-md hidden-lg" >Alterar Senha</a>
+            <a  class="btn btn-warning hidden-xs">Alterar Senha</a>
+        </form>
     </div>
 </div>

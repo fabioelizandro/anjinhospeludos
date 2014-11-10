@@ -12,7 +12,7 @@ angular.module('todasAsPatasApp')
                 $scope.loader = false;
                 $scope.alerts = [];
                 $scope.page = $location.search().page || 1;
-                $scope.limit = $location.search().limit || 10;
+                $scope.limit = $location.search().limit || 9;
                 $scope.enums = Enum.get();
                 $scope.filters = [];
                 $scope.pets = {};
@@ -152,8 +152,14 @@ angular.module('todasAsPatasApp')
                     }
 
                     $scope.loader = true;
-                    $scope.pets = Pet.query(params, function () {
+                    Pet.query(params, function (data) {
                         $scope.loader = false;
+                        if ($scope.pets.count !== undefined) {
+                            $scope.pets.resources = data.resources;
+                            $scope.pets.count = data.count;
+                        }else{
+                            $scope.pets = data;
+                        }
                     });
                 };
 

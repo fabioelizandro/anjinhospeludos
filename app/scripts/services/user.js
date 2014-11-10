@@ -20,9 +20,15 @@ angular.module('todasAsPatasApp')
                     }
                 },
                 updatePets: {
-                    method: 'POST',
+                    method: 'PUT',
                     params: {
                         controller: 'favorite-pet'
+                    }
+                },
+                update: {
+                    method: 'PUT',
+                    params: {
+                        controller: 'profile-update'
                     }
                 }
             });
