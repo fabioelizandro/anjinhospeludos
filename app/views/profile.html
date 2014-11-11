@@ -6,7 +6,7 @@
         </ol>
     </div>
 </div>
-<div alert type="{{alert.type}}" close="removeAlert($index)" ng-repeat="alert in alerts">
+<div alert type="{{alert.type}}" ng-repeat="alert in alerts" auto-exec="removeAlert($index)" timeout="3000">
     {{alert.message}}
 </div>
 <div class="row">
@@ -34,8 +34,8 @@
             </div>
             <button type="submit" class="btn btn-primary btn-block hidden-sm hidden-md hidden-lg" ng-disabled="formProfile.$invalid || loader">{{ (!loader)? 'Atualizar Perfil' : 'Atualizando ...' }}</button>
             <button type="submit" class="btn btn-primary hidden-xs" ng-disabled="formProfile.$invalid || loader">{{ (!loader)? 'Atualizar Perfil' : 'Atualizando ...' }}</button>
-            <a  class="btn btn-warning btn-block hidden-sm hidden-md hidden-lg" >Alterar Senha</a>
-            <a  class="btn btn-warning hidden-xs">Alterar Senha</a>
+                <a ng-href="{{ API_DOMAIN+'/usercommon/change-password?redirect='+APP_DOMAIN }}" class="btn btn-warning btn-block hidden-sm hidden-md hidden-lg" >Alterar Senha</a>
+                <a ng-href="{{ API_DOMAIN+'/usercommon/change-password?redirect='+APP_DOMAIN }}" class="btn btn-warning hidden-xs">Alterar Senha</a>
         </form>
     </div>
 </div>

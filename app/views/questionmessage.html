@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-xs-12">
+        <ol class="breadcrumb">
+            <li><a ui-sref="main({query: null})">Pets</a></li>
+            <li class="active">Perguntas</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="row" masonry>
+            <div class="masonry-brick col-xs-12 col-sm-6" ng-repeat="question in questions track by question.id">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <table class="table table-bordered table-striped">
+                            <tr>
+                                <td>Pergunta sobre o pet {{ question.pet.name }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ question.title }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ question.message }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

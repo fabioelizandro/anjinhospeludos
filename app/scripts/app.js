@@ -20,10 +20,10 @@ angular
             'app.oauth',
             'wu.masonry'
         ])
-//        .constant('API_DOMAIN', 'http://todas-as-patas.herokuapp.com')
-//        .constant('CLIENT_ID', '1_2hp5nnndor6ss4kwwosgcswc0g8wgw8ck4wggo8g8os4ggck4w')
-        .constant('CLIENT_ID', '1_1ohgofnq0nogkcccc8cs8w4ok44w08gk4wok8owook088w8gs4')
-        .constant('API_DOMAIN', 'http://localhost/todas-as-patas/web/app_dev.php')
+        .constant('API_DOMAIN', 'http://todas-as-patas.herokuapp.com')
+        .constant('CLIENT_ID', '1_2hp5nnndor6ss4kwwosgcswc0g8wgw8ck4wggo8g8os4ggck4w')
+//        .constant('CLIENT_ID', '1_1ohgofnq0nogkcccc8cs8w4ok44w08gk4wok8owook088w8gs4')
+//        .constant('API_DOMAIN', 'http://localhost/todas-as-patas/web/app_dev.php')
         .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', '$locationProvider', 'AccessTokenProvider', function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider, AccessTokenProvider) {
                 $stateProvider
                         .state('main', {
@@ -35,6 +35,18 @@ angular
                             url: '/perfil',
                             templateUrl: 'views/profile.html',
                             controller: 'ProfileCtrl',
+                            authenticate: true
+                        })
+                        .state('questionMessage', {
+                            url: '/perguntas',
+                            templateUrl: 'views/questionmessage.html',
+                            controller: 'QuestionMessageCtrl',
+                            authenticate: true
+                        })
+                        .state('adoptionMessage', {
+                            url: '/adocoes',
+                            templateUrl: 'views/adoptionmessage.html',
+                            controller: 'AdoptionMessageCtrl',
                             authenticate: true
                         })
                         .state('favorite', {
@@ -111,16 +123,17 @@ angular
                     }
                 };
             }])
-        .run(['$rootScope', 'Endpoint', 'Auth', 'AccessToken', '$window', '$location', 'User', function ($rootScope, Endpoint, Auth, AccessToken, $window, $location, User) {
-                
+        .run(['$rootScope', 'Endpoint', 'Auth', 'AccessToken', '$window', '$location', 'User', '$state', function ($rootScope, Endpoint, Auth, AccessToken, $window, $location, User, $state) {
+
                 $rootScope.$on('oauth:logout', function () {
                     Auth.setCurrentUser({});
                 });
+
                 $rootScope.$on('oauth:login', function () {
                     Auth.setCurrentUser(User.get());
                 });
-                
-                
+
+
 //              Workaround para resolver problemas de compatibilidade com plygins que utilizam 
 //              o evento de troca do ngRoute
                 $rootScope.$on('$stateChangeSuccess', function () {

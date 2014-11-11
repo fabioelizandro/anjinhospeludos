@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-xs-12">
+        <ol class="breadcrumb">
+            <li><a ui-sref="main({query: null})">Pets</a></li>
+            <li class="active">Adoções</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="row" masonry>
+            <div class="masonry-brick col-xs-12 col-sm-6" ng-repeat="adoption in adoptions track by adoption.id">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <table class="table table-bordered table-striped">
+                            <tr>
+                                <td>Pergunta sobre o pet {{ adoption.pet.name }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ adoption.title }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ adoption.message }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

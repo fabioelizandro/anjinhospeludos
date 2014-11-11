@@ -14,6 +14,11 @@ angular.module('todasAsPatasApp')
                 $scope.user = Auth.getCurrentUser();
                 $scope.API_DOMAIN = API_DOMAIN;
                 $scope.CLIENT_ID = CLIENT_ID;
+                $scope.hasFilter = $state.current.name === 'main';
+                
+                $scope.$on('$stateChangeSuccess', function () {
+                    $scope.hasFilter = $state.current.name === 'main';
+                });
                 
                 $scope.$on('oauth:logout', function () {
                     $scope.user = {};

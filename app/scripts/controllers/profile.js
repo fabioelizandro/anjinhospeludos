@@ -8,11 +8,13 @@
  * Controller of the todasAsPatasApp
  */
 angular.module('todasAsPatasApp')
-        .controller('ProfileCtrl', ['$scope', 'Auth', 'User', '$timeout', function ($scope, Auth, User, $timeout) {
+        .controller('ProfileCtrl', ['$scope', 'Auth', 'User', '$timeout', 'API_DOMAIN', '$location', function ($scope, Auth, User, $timeout, API_DOMAIN, $location) {
                 $scope.alerts = [];
                 $scope.user = Auth.getCurrentUser();
                 $scope.isLoggedIn = Auth.isLoggedIn;
                 $scope.loader = false;
+                $scope.API_DOMAIN = API_DOMAIN;
+                $scope.APP_DOMAIN = $location.absUrl();
 
                 $scope.updateProfile = function () {
                     var params = {
@@ -34,9 +36,6 @@ angular.module('todasAsPatasApp')
 
                 $scope.addAlert = function (type, message, time) {
                     $scope.alerts.push({type: type, message: message});
-                    $timeout(function(){
-                        $scope.removeAlert($scope.alerts.length - 1);
-                    }, time || 2000);
                 };
 
                 $scope.removeAlert = function (index) {

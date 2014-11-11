@@ -34,7 +34,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <button type="button" class="navbar-toggle " data-offcanvas style="color: #fff;">
+                    <button type="button" class="navbar-toggle " data-offcanvas style="color: #fff;"  ng-if="hasFilter">
                         <span class="sr-only">Alternar filtros</span>
                         <span class="glyphicon glyphicon-filter glyphicon-"></span>
                     </button>
@@ -53,6 +53,8 @@
                             <ul class="dropdown-menu">
                                 <li><a ui-sref="profile">Perfil</a></li>
                                 <li><a ui-sref="favorite">Favoritos</a></li>
+                                <li><a ui-sref="questionMessage">Perguntas</a></li>
+                                <li><a ui-sref="adoptionMessage">Adoções</a></li>
                             </ul>
                         </li>
 
@@ -212,6 +214,7 @@
         <script src="scripts/directives/icheck.js"></script>
         <script src="scripts/directives/offcanvas.js"></script>
         <script src="scripts/directives/scrollToTop.js"></script>
+        <script src="scripts/directives/autoExec.js"></script>
         <script src="scripts/services/pet.js"></script>
         <script src="scripts/services/enum.js"></script>
         <script src="scripts/services/breed.js"></script>
@@ -224,6 +227,8 @@
         <script src="scripts/services/organization.js"></script>
         <script src="scripts/controllers/profile.js"></script>
         <script src="scripts/controllers/favorite.js"></script>
+        <script src="scripts/controllers/adoptionmessage.js"></script>
+        <script src="scripts/controllers/questionmessage.js"></script>
         <script src="scripts/services/questionmessage.js"></script>
         <script src="scripts/services/adoptionmessage.js"></script>
         <script src="scripts/services/petlistener.js"></script>
