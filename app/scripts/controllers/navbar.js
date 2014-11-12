@@ -15,6 +15,7 @@ angular.module('todasAsPatasApp')
                 $scope.API_DOMAIN = API_DOMAIN;
                 $scope.CLIENT_ID = CLIENT_ID;
                 $scope.hasFilter = $state.current.name === 'main';
+                $scope.CLIENT_DOMAIN = $location.protocol()+'://'+$location.host()+(($location.port())? (':'+$location.port()) : '');
                 
                 $scope.$on('$stateChangeSuccess', function () {
                     $scope.hasFilter = $state.current.name === 'main';
