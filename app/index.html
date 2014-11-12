@@ -19,11 +19,11 @@
           <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="NavbarCtrl">
+        <nav class="navbar navbar-inverse" role="navigation" ng-controller="NavbarCtrl">
             <script type="text/ng-template" id="oauth-buttons.html">
-                <a style="cursor: pointer;" class="logged-out" ng-show="show=='logged-out'" ng-click="login()">{{text}}</a>
-                <a style="cursor: pointer;" class="logged-in"  ng-show="show=='logged-in'"  ng-click="logout()">Sair</a>
-                <a style="cursor: pointer;" class="denied"     ng-show="show=='denied'"      ng-click="login()">Acesso negado. Tente de novo.</a>
+                <a style="cursor: pointer;" class="logged-out inverse" ng-show="show=='logged-out'" ng-click="login()">{{text}}</a>
+                <a style="cursor: pointer;" class="logged-in inverse"  ng-show="show=='logged-in'"  ng-click="logout()">Sair</a>
+                <a style="cursor: pointer;" class="denied inverse"     ng-show="show=='denied'"      ng-click="login()">Acesso negado. Tente de novo.</a>
             </script>
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -33,7 +33,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <button type="button" class="navbar-toggle " data-offcanvas style="color: #fff;"  ng-if="hasFilter">
+                    <button type="button" class="navbar-toggle " data-offcanvas style="color: #fff;"  ng-show="hasFilter">
                         <span class="sr-only">Alternar filtros</span>
                         <span class="glyphicon glyphicon-filter glyphicon-"></span>
                     </button>
@@ -44,11 +44,11 @@
                 </div>
                 <div style="height: 1px;" aria-expanded="false" id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li ng-if="user.id">
-                            <a ui-sref="petListener">Criar Ouvinte</a>
+                        <li ng-show="user.id">
+                            <a class="inverse" ui-sref="petListener">Criar Ouvinte</a>
                         </li>
-                        <li class="dropdown" on-toggle="toggled(open)" ng-if="user.id">
-                            <a style="cursor: pointer;" class="dropdown-toggle">{{ user.email}} <span class="caret"></span></a>
+                        <li class="dropdown" on-toggle="toggled(open)" ng-show="user.id">
+                            <a  style="cursor: pointer;" class="dropdown-toggle inverse">{{ user.email}} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a ui-sref="profile">Perfil</a></li>
                                 <li><a ui-sref="favorite">Favoritos</a></li>
@@ -109,19 +109,19 @@
                                 </ul>
                                 <ul class='footer-social-links inline list-inline pull-right'>
                                     <li>
-                                        <a href="https://www.facebook.com/" class="fa-stack fa-lg facebook">
+                                        <a href="https://www.facebook.com/pages/Todas-as-Patas/799598340104478" class="fa-stack fa-lg facebook">
                                             <i class="fa fa-circle fa-stack-2x"></i>
                                             <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://plus.google.com" class="fa-stack fa-lg google">
+                                        <a href="https://plus.google.com/b/100267514698257523669/100267514698257523669/posts?hl=pt-BR&service=PLUS" class="fa-stack fa-lg google">
                                             <i class="fa fa-circle fa-stack-2x"></i>
                                             <i class="fa fa-google fa-stack-1x fa-inverse"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="http://instagram.com/" class="fa-stack fa-lg instagram">
+                                        <a href="http://instagram.com/todasaspatas" class="fa-stack fa-lg instagram">
                                             <i class="fa fa-circle fa-stack-2x"></i>
                                             <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
                                         </a>
@@ -201,6 +201,7 @@
         <script src="scripts/directives/offcanvas.js"></script>
         <script src="scripts/directives/scrollToTop.js"></script>
         <script src="scripts/directives/autoExec.js"></script>
+        <script src="scripts/directives/share.js"></script>
         <script src="scripts/services/pet.js"></script>
         <script src="scripts/services/enum.js"></script>
         <script src="scripts/services/breed.js"></script>
@@ -219,5 +220,6 @@
         <script src="scripts/services/adoptionmessage.js"></script>
         <script src="scripts/services/petlistener.js"></script>
         <!-- endbuild -->
+        <script src="scripts/facebook.js"></script>
     </body>
 </html>

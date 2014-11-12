@@ -48,6 +48,21 @@ angular.module('todasAsPatasApp')
                 };
                 
                 /**
+                 * Alterana o status de favorito do pet
+                 */
+                $scope.toggleFavoritePet = function(pet){
+                    if (!$scope.isLoggedIn()) {
+                        return;
+                    }
+                    
+                    if (!$scope.isFavorited(pet)) {
+                        $scope.addFavoritePet(pet);
+                    }else{
+                        $scope.removeFavoritePet(pet);
+                    }
+                };
+                
+                /**
                  * Remove um pet da lista de favoritos fo usuario
                  */
                 $scope.removeFavoritePet = function (newPet) {
@@ -241,6 +256,13 @@ angular.module('todasAsPatasApp')
                  */
                 $scope.onChangeBreed = function () {
                     $location.search('breed', ($scope.breed !== null) ? $scope.breed.id : null);
+                };
+                
+                /**
+                 * Cria um link para compartilhar
+                 */
+                $scope.getSharingLink = function(pet){
+                    return $location.protocol()+'://'+$location.host()+(($location.port())? (':'+$location.port()) : '')+'/pet/'+pet.id;
                 };
 
                 /**

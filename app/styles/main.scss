@@ -10,15 +10,95 @@ body {
     overflow-x: hidden; /* Prevent scroll on narrow devices */
 }
 body {
-    padding-top: 50px;
     background: none repeat scroll 0% 0% $gray-dark;
 }
 
+.btn{
+    border-radius: 0 !important;
+}
+
+.btn-facebook{
+    @include button-variant(#fff, #4769A2, #4769A2);
+}
+
+.animal .thumbnail{
+    border-radius: 0 !important;
+    padding: 0px !important;
+
+    .favorite-link{
+        position: absolute;
+        right: 25px;
+        top: 10px;
+        z-index: 3;
+        color: #fff;
+    }
+
+/*    .favorite-link:hover{
+        .favorited{
+            color: #F0EFEB !important;
+        }
+        
+        .unfavorited{
+            color: #F26868 !important;
+        }
+    }*/
+    
+    .favorite-link .favorited{
+        color: #F26868 !important;
+    }
+
+    .favorite-link .unfavorited{
+        color: #F0EFEB !important;
+    }
+
+    .caption{
+        h1,h2,h3,h4{
+            margin-top: 10px !important;
+            margin-bottom: 10px !important;
+        }
+    }
+
+    .actions{
+
+        width: 100% !important;
+
+        .btn{
+            width: 50% !important;
+        }
+    }
+}
+
+.panel.panel-filter{
+    border: none !important;
+    border-radius: 0 !important;
+
+    .panel-heading{
+        border-bottom: solid 2px #F0EFEB;
+    }
+}
+
 nav{
+
+    background-image: url(../images/nav.jpg) !important;
+    border: none !important;
+    margin-bottom: 0px !important;
+
+    ul{
+        li{
+            a.inverse{
+                color: #fff !important;
+            }
+
+            a.inverse:hover{
+                color: #999 !important;
+            }
+        }
+    }
+
     .navbar-brand{
         color: #fff !important;
     }
-    
+
     .navbar-brand:hover{
         color: #999 !important;
     }
@@ -26,7 +106,7 @@ nav{
 
 .container-view{
     padding-top: 20px;
-    background: none repeat scroll 0% 0% #fff;
+    background: none repeat scroll 0% 0% #F0EFEB;
     min-height: 300px;
 }
 
@@ -82,7 +162,7 @@ footer{
     margin: 0px 0px 10px;
     text-align: center;
     .form-group,input[type="submit"]{
-        width: 24%;
+        width: 33%;
     }
     .form-control{
         width: 100%;
