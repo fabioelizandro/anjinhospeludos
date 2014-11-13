@@ -6,10 +6,13 @@
         </ol>
     </div>
 </div>
-<div alert type="{{alert.type}}" ng-repeat="alert in alerts" auto-exec="removeAlert($index)" timeout="3000">
-    {{alert.message}}
-</div>
-<div class="row">
+
+<div class="row row-inversed row-page">
+    <div class="col-xs-12">
+        <div alert type="{{alert.type}}" ng-repeat="alert in alerts" auto-exec="removeAlert($index)" timeout="3000">
+            {{alert.message}}
+        </div>
+    </div>
     <div class="col-xs-12 col-sm-8">
         <form role="form" name="formProfile" ng-submit="updateProfile()" novalidate style="margin-bottom: 20px;">
             <div class="form-group">
@@ -32,10 +35,10 @@
                 <label for="phone">Telefone</label>
                 <input type="text" class="form-control" id="phone" ng-model="user.phone" required>
             </div>
-            <button type="submit" class="btn btn-primary btn-block hidden-sm hidden-md hidden-lg" ng-disabled="formProfile.$invalid || loader">{{ (!loader)? 'Atualizar Perfil' : 'Atualizando ...' }}</button>
-            <button type="submit" class="btn btn-primary hidden-xs" ng-disabled="formProfile.$invalid || loader">{{ (!loader)? 'Atualizar Perfil' : 'Atualizando ...' }}</button>
-                <a ng-href="{{ API_DOMAIN+'/usercommon/change-password?redirect='+APP_DOMAIN }}" class="btn btn-warning btn-block hidden-sm hidden-md hidden-lg" >Alterar Senha</a>
-                <a ng-href="{{ API_DOMAIN+'/usercommon/change-password?redirect='+APP_DOMAIN }}" class="btn btn-warning hidden-xs">Alterar Senha</a>
+            <button type="submit" class="btn btn-primary btn-block hidden-sm hidden-md hidden-lg" ng-disabled="formProfile.$invalid || loader">{{ (!loader) ? 'Atualizar Perfil' : 'Atualizando ...'}}</button>
+            <button type="submit" class="btn btn-primary hidden-xs" ng-disabled="formProfile.$invalid || loader">{{ (!loader) ? 'Atualizar Perfil' : 'Atualizando ...'}}</button>
+            <a ng-href="{{ API_DOMAIN + '/usercommon/change-password?redirect=' + APP_DOMAIN}}" class="btn btn-warning btn-block hidden-sm hidden-md hidden-lg" >Alterar Senha</a>
+            <a ng-href="{{ API_DOMAIN + '/usercommon/change-password?redirect=' + APP_DOMAIN}}" class="btn btn-warning hidden-xs">Alterar Senha</a>
         </form>
     </div>
 </div>

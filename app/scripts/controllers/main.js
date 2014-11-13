@@ -259,13 +259,6 @@ angular.module('todasAsPatasApp')
                 };
                 
                 /**
-                 * Cria um link para compartilhar
-                 */
-                $scope.getSharingLink = function(pet){
-                    return $location.protocol()+'://'+$location.host()+(($location.port())? (':'+$location.port()) : '')+'/pet/'+pet.id;
-                };
-
-                /**
                  * Inicializa a página
                  */
                 $scope.updatePets();

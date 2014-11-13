@@ -13,6 +13,33 @@ body {
     background: none repeat scroll 0% 0% $gray-dark;
 }
 
+.row-page{
+    min-height: 400px !important;
+}
+
+.row-inversed{
+    background-color: #fff;
+    padding-top: 20px !important;
+}
+
+.pet-row{
+    margin-top: -20px !important;
+    padding-top: 20px !important;
+    background-color: #fff;
+}
+
+.modal-header{
+    background-color: $background-color !important;
+}
+
+.modal-content{
+    border-radius: 0 !important;
+}
+
+.event-all{
+    pointer-events: all !important;
+}
+
 .row-text{
     background-color: #fff;
     
@@ -73,7 +100,7 @@ body {
     }
 
     .favorite-link .unfavorited{
-        color: $background-color !important;
+        color: #858585 !important;
     }
 
     .caption{

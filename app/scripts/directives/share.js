@@ -7,17 +7,18 @@
  * # share
  */
 angular.module('todasAsPatasApp')
-        .directive('share', ['$timeout', function ($timeout) {
+        .directive('share', ['$timeout', '$location', function ($timeout, $location) {
                 return {
                     restrict: 'A',
                     link: function (scope, $elm, $attrs) {
                         $elm.click(function () {
                             $timeout(function () {
+                                var link = $location.protocol() + '://' + $location.host() + (($location.port()) ? (':' + $location.port()) : '') + $attrs.share;
                                 FB.ui(
                                         {
                                             method: 'share',
-                                            href: $attrs.share
-                                        }, function (response) {
+                                            href: link
+                                        }, function () {
                                 });
                             });
                         });

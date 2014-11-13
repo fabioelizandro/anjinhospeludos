@@ -25,7 +25,19 @@ angular.module('todasAsPatasApp')
                 $scope.isFavorited = function () {
                     return _.find($scope.user.favoritePets, {id: $scope.pet.id});
                 };
-
+                
+                $scope.toggleFavoritePet = function(){
+                    if (!$scope.isLoggedIn()) {
+                        return;
+                    }
+                    
+                    if (!$scope.isFavorited()) {
+                        $scope.addFavoritePet();
+                    }else{
+                        $scope.removeFavoritePet();
+                    }
+                };
+                
                 $scope.removeFavoritePet = function () {
                     if (!$scope.isFavorited()) {
                         return;
