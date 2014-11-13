@@ -8,7 +8,7 @@
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <div class="row" masonry>
+        <div class="row" masonry preserve-order>
             <div class="animal masonry-brick col-xs-12 col-sm-6 col-md-4" ng-repeat="pet in user.favoritePets">
                 <div class="thumbnail">
                     <img class="img-responsive" ng-src="{{pet.profileImage }}"  alt="{{ pet.name}}">

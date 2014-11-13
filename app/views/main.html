@@ -31,10 +31,10 @@
                 <i class="fa fa-spin fa-refresh fa-5x"></i>
             </div>
         </div>
-        <div ng-show="!loader" class="row" masonry>
+        <div ng-show="!loader" class="row" masonry preserve-order>
             <div class="animal masonry-brick col-xs-12 col-sm-6 col-md-4" ng-repeat="pet in pets.resources">
                 <div class="thumbnail">
-                    <a tooltip="{{ (isFavorited(pet))? 'Desfavoritar' : 'Favoritar' }}" tooltip-placement="left" ng-click="toggleFavoritePet(pet)" class="fa-stack fa-2x favorite-link" style="cursor: pointer;">
+                    <a tooltip="{{ (isFavorited(pet))? 'Desfavoritar' : 'Favoritar' }}" tooltip-placement="left" ng-click="toggleFavoritePet(pet)" class="fa-stack fa-2x favorite-link" style="cursor: pointer;" ng-show="isLoggedIn()">
                         <i class="fa fa-circle fa-stack-2x"></i>
                         <span ng-class="{'favorited': isFavorited(pet), 'unfavorited' : !isFavorited(pet)}" ><i ng-class="{'fa-refresh fa-spin': pet.favoritedLoader, 'fa-heart': !pet.favoritedLoader, 'fa' : true, 'fa-stack-1x': true}"></i></span>
                     </a>

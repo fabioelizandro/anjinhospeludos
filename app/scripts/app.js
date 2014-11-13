@@ -20,10 +20,10 @@ angular
             'app.oauth',
             'wu.masonry'
         ])
-        .constant('API_DOMAIN', 'http://todas-as-patas.herokuapp.com')
-        .constant('CLIENT_ID', '1_2hp5nnndor6ss4kwwosgcswc0g8wgw8ck4wggo8g8os4ggck4w')
-//        .constant('CLIENT_ID', '1_1ohgofnq0nogkcccc8cs8w4ok44w08gk4wok8owook088w8gs4')
-//        .constant('API_DOMAIN', 'http://localhost/todas-as-patas/web/app_dev.php')
+//        .constant('API_DOMAIN', 'http://todas-as-patas.herokuapp.com')
+//        .constant('CLIENT_ID', '1_2hp5nnndor6ss4kwwosgcswc0g8wgw8ck4wggo8g8os4ggck4w')
+        .constant('CLIENT_ID', '1_1ohgofnq0nogkcccc8cs8w4ok44w08gk4wok8owook088w8gs4')
+        .constant('API_DOMAIN', 'http://localhost/todas-as-patas/web/app_dev.php')
         .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', '$locationProvider', 'AccessTokenProvider', function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider, AccessTokenProvider) {
                 $stateProvider
                         .state('main', {
@@ -36,6 +36,12 @@ angular
                             templateUrl: 'views/profile.html',
                             controller: 'ProfileCtrl',
                             authenticate: true
+                        })
+                        .state('text', {
+                            url: '/text/:type',
+                            templateUrl: 'views/text.html',
+                            controller: 'TextCtrl',
+                            authenticate: false
                         })
                         .state('questionMessage', {
                             url: '/perguntas',
@@ -134,7 +140,7 @@ angular
                 });
 
 
-//              Workaround para resolver problemas de compatibilidade com plygins que utilizam 
+//              Workaround para resolver problemas de compatibilidade com plygins que utilizam
 //              o evento de troca do ngRoute
                 $rootScope.$on('$stateChangeSuccess', function () {
                     $rootScope.$broadcast('$routeChangeSuccess');
@@ -149,4 +155,3 @@ angular
                     });
                 });
             }]);
-

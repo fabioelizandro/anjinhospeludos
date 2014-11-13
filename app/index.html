@@ -89,16 +89,16 @@
                             <div class="pull-right">
                                 <ul class='footer-links inline list-inline'>
                                     <li>
-                                        <a ui-sref="organization">Organizações</a>
+                                        <a ui-sref="organization" scroll-to-top>Organizações</a>
                                     </li>
                                     <li>
-                                        <a ui-sref="main">Sobre</a>
+                                        <a ui-sref="text({type: 'aboutUs'})" scroll-to-top>Sobre</a>
                                     </li>
                                     <li>
-                                        <a ui-sref="main">Privacidade</a>
+                                        <a ui-sref="text({type: 'privacyPolicy'})" scroll-to-top>Privacidade</a>
                                     </li>
                                     <li>
-                                        <a ui-sref="main">Termos de uso</a>
+                                        <a ui-sref="text({type: 'termsOfService'})" scroll-to-top>Termos de uso</a>
                                     </li>
                                     <li>
                                         <a href="https://github.com/fabioelizandro/todas-as-patas-app" target="_blank">Código fonte</a>
@@ -216,9 +216,11 @@
         <script src="scripts/controllers/favorite.js"></script>
         <script src="scripts/controllers/adoptionmessage.js"></script>
         <script src="scripts/controllers/questionmessage.js"></script>
+        <script src="scripts/controllers/text.js"></script>
         <script src="scripts/services/questionmessage.js"></script>
         <script src="scripts/services/adoptionmessage.js"></script>
         <script src="scripts/services/petlistener.js"></script>
+        <script src="scripts/services/text.js"></script>
         <!-- endbuild -->
         <script src="scripts/facebook.js"></script>
     </body>
