@@ -1,3 +1,5 @@
+'use strict';
+
 window.fbAsyncInit = function () {
     FB.init({
         appId: '712902572134462',
@@ -13,6 +15,6 @@ window.fbAsyncInit = function () {
     }
     js = d.createElement(s);
     js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
+    js.src = '//connect.facebook.net/en_US/sdk.js';
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));

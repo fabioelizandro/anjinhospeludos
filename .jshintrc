@@ -22,6 +22,7 @@
 	"angular": false,
 	"jQuery": false,
 	"_" : false,
-	"$" : false
+	"$" : false,
+	"FB": false
   }
 }
