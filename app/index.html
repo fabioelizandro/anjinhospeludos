@@ -27,13 +27,14 @@
             </script>
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
+                    <button type="button" class="navbar-toggle navbar-inverse" ng-click="isCollapsed = !isCollapsed">
+                        <span class="sr-only">Alterar navegação</span>
+                        <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <button type="button" class="navbar-toggle " data-offcanvas style="color: #fff;"  ng-show="hasFilter">
+                    <button type="button" class="navbar-toggle navbar-inverse" data-offcanvas style="color: #fff;"  ng-show="hasFilter">
                         <span class="sr-only">Alternar filtros</span>
                         <span class="glyphicon glyphicon-filter glyphicon-"></span>
                     </button>
@@ -42,22 +43,23 @@
                         Todas as Patas
                     </a>
                 </div>
-                <div style="height: 1px;" aria-expanded="false" id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
+                <div id="navbar" class="navbar-collapse collapse" collapse="!isCollapsed">
+                    <ul class="nav navbar-nav navbar-right text-right">
                         <li ng-show="user.id">
-                            <a class="inverse" ui-sref="petListener">Criar Ouvinte</a>
+                            <a class="inverse" ui-sref="petListener" ng-click="closeNav()">Criar Ouvinte</a>
                         </li>
                         <li class="dropdown" on-toggle="toggled(open)" ng-show="user.id">
                             <a  style="cursor: pointer;" class="dropdown-toggle inverse">{{ user.email}} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a ui-sref="profile">Perfil</a></li>
-                                <li><a ui-sref="favorite">Favoritos</a></li>
-                                <li><a ui-sref="questionMessage">Perguntas</a></li>
-                                <li><a ui-sref="adoptionMessage">Adoções</a></li>
+                                <li class="text-right"><a ng-click="closeNav()" ui-sref="profile">Perfil</a></li>
+                                <li class="text-right"><a ng-click="closeNav()" ui-sref="favorite">Favoritos</a></li>
+                                <li class="text-right"><a ng-click="closeNav()" ui-sref="questionMessage">Perguntas</a></li>
+                                <li class="text-right"><a ng-click="closeNav()" ui-sref="adoptionMessage">Adoções</a></li>
                             </ul>
                         </li>
 
-                        <li data-oauth
+                        <li ng-click="closeNav()"
+                            data-oauth
                             site="{{API_DOMAIN}}"
                             client-id="{{ CLIENT_ID}}"
                             redirect-uri="{{CLIENT_DOMAIN}}"
@@ -67,7 +69,7 @@
                             >    
                         </li>
                     </ul>
-                    <form class="navbar-form navbar-right" ng-submit="find()">
+                    <form class="navbar-form navbar-right text-right" ng-submit="find()">
                         <input class="form-control" placeholder="Buscar..." type="text" ng-model="query">
                     </form>
                 </div>
@@ -212,7 +214,6 @@
         <script src="bower_components/masonry/masonry.js"></script>
         <script src="bower_components/angular-masonry/angular-masonry.js"></script>
         <!-- endbower -->
-        <script src="scripts/facebook.js"></script>
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->

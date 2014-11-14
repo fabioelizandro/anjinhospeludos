@@ -42,12 +42,12 @@ body {
 
 .row-text{
     background-color: #fff;
-    
+
     h1{
         margin-top: 0px !important;
         margin-bottom: 25px !important;
     }
-    
+
     .col-text{
         font-family: "Trebuchet MS",Arial;
         font-size: 16px;
@@ -59,7 +59,7 @@ body {
         padding: 30px 40px !important;
         border-right: solid 2px $background-color;
     }
-    
+
     .col-nav{
         padding: 15px 15px !important;
     }
@@ -85,16 +85,16 @@ body {
         color: #fff;
     }
 
-/*    .favorite-link:hover{
-        .favorited{
-            color: $background-color !important;
-        }
-        
-        .unfavorited{
-            color: #F26868 !important;
-        }
-    }*/
-    
+    /*    .favorite-link:hover{
+            .favorited{
+                color: $background-color !important;
+            }
+            
+            .unfavorited{
+                color: #F26868 !important;
+            }
+        }*/
+
     .favorite-link .favorited{
         color: #F26868 !important;
     }
@@ -214,7 +214,7 @@ footer{
     margin: 0px 0px 10px;
     text-align: center;
     .form-group,input[type="submit"]{
-        width: 33%;
+        width: 32%;
     }
     .form-control{
         width: 100%;
@@ -223,6 +223,10 @@ footer{
 }
 
 @media screen and (max-width: $screen-xs-max) {
+    #navbar{
+        background-color: #333333 !important;
+    }
+
     .filter-main{
         .form-group, input[type="submit"]{
             width: 100% !important;
@@ -242,6 +246,14 @@ footer{
  * Off Canvas
  */
 @media screen and (max-width: $screen-sm-max) {
+    
+    .navbar-form input{
+        /*width: 100% !important;*/
+    }
+    
+    #navbar{
+        background-color: #333333 !important;
+    }
 
     .row-offcanvas {
         position: relative;

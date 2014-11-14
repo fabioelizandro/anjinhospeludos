@@ -95,6 +95,9 @@ angular
 
                 $urlRouterProvider.otherwise('/');
                 $httpProvider.interceptors.push('authInterceptor');
+                
+                $httpProvider.defaults.useXDomain = true;
+                delete $httpProvider.defaults.headers.common['X-Requested-With'];
             }])
         .factory('authInterceptor', ['$rootScope', '$q', 'AccessToken', '$location', 'Endpoint', function ($rootScope, $q, AccessToken, $location, Endpoint) {
                 return {

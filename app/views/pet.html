@@ -4,13 +4,13 @@
             <div class="pull-left">
                 <a class="btn btn-facebook btn-lg" share="{{ ('/pet/' + pet.id)}}">
                     <i class="fa fa-facebook"></i>
-                    Compartilhar
+                    <span class="hidden-xs">Compartilhar</span>
                 </a>
             </div>
             <div class="pull-right">
                 <button tooltip="{{ (!isLoggedIn()) ? 'Você precisa estar logado para favoritar' : ''}}" ng-class="{'btn btn-danger btn-lg': true, 'disabled event-all': !isLoggedIn() }" ng-click="toggleFavoritePet()">
                     <span ng-class="{'favorited': isFavorited(), 'unfavorited' : !isFavorited()}" ><i ng-class="{'fa-refresh fa-spin': pet.favoritedLoader, 'fa-heart': !pet.favoritedLoader && !isFavorited(), 'fa-heart-o': !pet.favoritedLoader && isFavorited(), 'fa' : true}"></i></span>
-                    {{ (isFavorited()) ? 'Desfavoritar' : 'Favoritar'}}
+                    <span class="hidden-xs">{{ (isFavorited()) ? 'Desfavoritar' : 'Favoritar'}}</span>
                 </button>
                 <button tooltip="{{ (!isLoggedIn()) ? 'Você precisa estar logado para adotar um pet' : ''}}" ng-class="{'btn btn-success btn-lg': true, 'disabled event-all': !isLoggedIn() }" ng-click="openAdoption()">
                     Adotar
@@ -45,7 +45,7 @@
                     <div class="col-xs-12">
                         <div class="well">
                             <div class="row">
-                                <div class="col-xs-12 col-sm-4">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
                                     <strong>
                                         <i class="fa fa-map-marker fa-lg"></i>
                                         Localização
@@ -57,7 +57,7 @@
                                     </strong>
                                     <div class="pet-info-holder">{{ pet.id}}</div>
                                 </div>
-                                <div class="col-xs-12 col-sm-4">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
                                     <strong>
                                         <i class="fa fa-tag fa-lg"></i>
                                         Endereço
@@ -68,7 +68,7 @@
                                     <div class="pet-info-holder">Número {{ pet.organization.address.number}}</div>
                                     <div class="pet-info-holder">Bairro {{ pet.organization.address.district}}</div>
                                 </div>
-                                <div class="col-xs-12 col-sm-4">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
                                     <button tooltip="{{ (!isLoggedIn()) ? 'Você precisa estar logado para fazer um pergunta' : ''}}" ng-class="{'btn btn-default': true, 'disabled event-all': !isLoggedIn() }"  ng-click="openQuestion()">
                                         <i class="fa fa-comment"></i>
                                         Enviar Pergunta
@@ -79,7 +79,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-12 col-sm-7">
+                    <div class="col-xs-12 col-sm-12 col-md-8">
                         <h1>História {{ ((pet.genderId === 1) ? 'do' : 'da') + ' ' + pet.name}}</h1>
                         <div ng-bind-html="pet.history" ng-if="pet.history"></div>
                         <div ng-if="!pet.history">
@@ -88,7 +88,7 @@
                                 pergunta</a>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-5">
+                    <div class="col-xs-12 col-sm-12 col-md-4">
                         <table class="table table-bordered table-striped">
                             <tr>
                                 <th colspan="2" class="text-center">

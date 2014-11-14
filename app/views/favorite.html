@@ -13,7 +13,7 @@
                 <div class="thumbnail">
                     <a tooltip="{{ (isLoggedIn())? (isFavorited(pet))? 'Desfavoritar' : 'Favoritar' : 'Você precisa estar logado para favoritar um pet' }}" tooltip-placement="left" ng-click="toggleFavoritePet(pet)" class="fa-stack fa-2x favorite-link" style="cursor: pointer;" >
                         <i class="fa fa-circle fa-stack-2x"></i>
-                        <span ng-class="{'favorited': isFavorited(pet), 'unfavorited' : !isFavorited(pet)}" ><i ng-class="{'fa-refresh fa-spin': pet.favoritedLoader, 'fa-heart': !pet.favoritedLoader, 'fa' : true, 'fa-stack-1x': true}"></i></span>
+                        <span ng-class="{'favorited': isFavorited(pet), 'unfavorited' : !isFavorited(pet)}" ><i ng-class="{'fa-heart fa' : true, 'fa-stack-1x': true}"></i></span>
                     </a>
                     <a ui-sref="pet({id: pet.id})">
                         <img class="img-responsive" ng-src="{{ pet.profileImage}}"  alt="{{ pet.name}}" style="width: 100% !important; height: auto !important;">

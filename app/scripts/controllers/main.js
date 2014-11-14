@@ -18,7 +18,7 @@ angular.module('todasAsPatasApp')
                 $scope.pets = {};
                 $scope.breed = null;
                 $scope.sorting = ($location.search().sorting) ? Enum.getItem('sorting', $location.search().sorting) : null;
-                $scope.type = ($location.search().type) ? Enum.getItem('type', $location.search().type) : null;
+                $scope.type = ($location.search().type) ? Enum.getItem('type', $location.search().type) : Enum.getItem('type', 1);
                 $scope.size = Enum.getItem('size', $location.search().size) || null;
                 $scope.gender = Enum.getItem('gender', $location.search().gender) || null;
                 $scope.age = Enum.getItem('age', $location.search().age) || null;
