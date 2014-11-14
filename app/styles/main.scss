@@ -22,6 +22,10 @@ body {
     padding-top: 20px !important;
 }
 
+textarea.max-width{
+    max-width: 100% !important;
+}
+
 .pet-row{
     margin-top: -20px !important;
     padding-top: 20px !important;
@@ -219,10 +223,18 @@ footer{
     .form-control{
         width: 100%;
     }
-
+    
+    .form-group:last-of-type{
+        margin-bottom: 0px !important;
+    }
 }
 
 @media screen and (max-width: $screen-xs-max) {
+    
+    .btn.btn-block-xs{
+        width: 100% !important;
+    }
+    
     #navbar{
         background-color: #333333 !important;
     }
@@ -246,11 +258,11 @@ footer{
  * Off Canvas
  */
 @media screen and (max-width: $screen-sm-max) {
-    
+
     .navbar-form input{
         /*width: 100% !important;*/
     }
-    
+
     #navbar{
         background-color: #333333 !important;
     }

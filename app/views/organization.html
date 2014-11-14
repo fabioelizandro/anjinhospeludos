@@ -20,10 +20,10 @@
                 <td>{{ organization.email}}</td>
                 <td>
                     <div>{{ organization.address.city.name + ', ' + organization.address.city.state.acronym}}</div>
-<!--                    <div>CEP {{ organization.address.postalCode}}</div>
-                    <div>Rua {{ organization.address.street}}</div>
-                    <div>Número {{ organization.address.number}}</div>
-                    <div>Bairro {{ organization.address.district}}</div>-->
+                    <!--                    <div>CEP {{ organization.address.postalCode}}</div>
+                                        <div>Rua {{ organization.address.street}}</div>
+                                        <div>Número {{ organization.address.number}}</div>
+                                        <div>Bairro {{ organization.address.district}}</div>-->
                 </td>
                 <td>{{ organization.phone}}</td>
             </tr>
@@ -43,10 +43,11 @@
             max-size="5" 
             class="pagination-sm" 
             boundary-links="true" 
-            previous-text="Anterior"
-            next-text="Próximo"
-            last-text="Último"
-            first-text="Primeiro"
+            class='pagination-lg'
+            previous-text="&lsaquo;" 
+            next-text="&rsaquo;" 
+            first-text="&laquo;" 
+            last-text="&raquo;"
             rotate="false" ></pagination>
     </div>
 </div>

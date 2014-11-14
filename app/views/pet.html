@@ -3,7 +3,8 @@
         <div class="col-xs-12">
             <div class="pull-left">
                 <a class="btn btn-facebook btn-lg" share="{{ ('/pet/' + pet.id)}}">
-                    <i class="fa fa-facebook"></i>
+                    <i class="fa fa-share-alt hidden-sm hidden-md hidden-lg"></i>
+                    <i class="fa fa-facebook hidden-xs"></i>
                     <span class="hidden-xs">Compartilhar</span>
                 </a>
             </div>
@@ -69,7 +70,7 @@
                                     <div class="pet-info-holder">Bairro {{ pet.organization.address.district}}</div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <button tooltip="{{ (!isLoggedIn()) ? 'Você precisa estar logado para fazer um pergunta' : ''}}" ng-class="{'btn btn-default': true, 'disabled event-all': !isLoggedIn() }"  ng-click="openQuestion()">
+                                    <button tooltip="{{ (!isLoggedIn()) ? 'Você precisa estar logado para fazer um pergunta' : ''}}" ng-class="{'btn btn-default btn-block-xs': true, 'disabled event-all': !isLoggedIn() }"  ng-click="openQuestion()">
                                         <i class="fa fa-comment"></i>
                                         Enviar Pergunta
                                     </button>
@@ -147,7 +148,7 @@
         </div>
         <div class="form-group">
             <label for="questionMessage">Mensagem</label>
-            <textarea name="message" ng-model="message" class="form-control" id="questionMessage" required></textarea>
+            <textarea name="message" ng-model="message" class="form-control max-width" id="questionMessage" required></textarea>
             <div ng-show="qform.message.$dirty && qform.message.$invalid" class="help-block">
                 <span ng-show="qform.message.$error.required">O que você quer perguntar?.</span>
             </div>
@@ -220,7 +221,7 @@
                 </div>
                 <div class="form-group">
                     <label for="adoptionMessage">Mensagem</label>
-                    <textarea name="message" ng-model="message" class="form-control" id="adoptionMessage" required></textarea>
+                    <textarea name="message" ng-model="message" class="form-control max-width" id="adoptionMessage" required></textarea>
                     <div ng-show="aform.message.$dirty && aform.message.$invalid" class="help-block">
                         <span ng-show="aform.message.$error.required">Deixe uma mensagem para a organização.</span>
                     </div>

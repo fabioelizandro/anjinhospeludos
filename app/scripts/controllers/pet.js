@@ -90,7 +90,11 @@ angular.module('todasAsPatasApp')
 
 
                 $scope.openAdoption = function () {
-
+                    
+                    if (!$scope.isLoggedIn()) {
+                        return;
+                    }
+                    
                     var modalInstance = $modal.open({
                         templateUrl: 'adoptionModal.html',
                         controller: 'SendAdoptionRequestModalCtrl',
@@ -113,8 +117,13 @@ angular.module('todasAsPatasApp')
 
                     });
                 };
+                
                 $scope.openQuestion = function () {
-
+                    
+                    if (!$scope.isLoggedIn()) {
+                        return;
+                    }
+                    
                     var modalInstance = $modal.open({
                         templateUrl: 'questionModal.html',
                         controller: 'SendQuestionModalCtrl',
