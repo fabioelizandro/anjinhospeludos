@@ -20,10 +20,10 @@ angular
             'app.oauth',
             'wu.masonry'
         ])
-        .constant('API_DOMAIN', 'http://todas-as-patas.herokuapp.com')
-        .constant('CLIENT_ID', '1_2hp5nnndor6ss4kwwosgcswc0g8wgw8ck4wggo8g8os4ggck4w')
-//        .constant('CLIENT_ID', '1_1ohgofnq0nogkcccc8cs8w4ok44w08gk4wok8owook088w8gs4')
-//        .constant('API_DOMAIN', 'http://localhost/todas-as-patas/web/app_dev.php')
+//        .constant('API_DOMAIN', 'http://todas-as-patas.herokuapp.com')
+//        .constant('CLIENT_ID', '1_2hp5nnndor6ss4kwwosgcswc0g8wgw8ck4wggo8g8os4ggck4w')
+        .constant('CLIENT_ID', '1_1ohgofnq0nogkcccc8cs8w4ok44w08gk4wok8owook088w8gs4')
+        .constant('API_DOMAIN', 'http://localhost/todas-as-patas/web/app_dev.php')
         .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', '$locationProvider', 'AccessTokenProvider', function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider, AccessTokenProvider) {
                 $stateProvider
                         .state('main', {
@@ -95,7 +95,7 @@ angular
 
                 $urlRouterProvider.otherwise('/');
                 $httpProvider.interceptors.push('authInterceptor');
-                
+
                 $httpProvider.defaults.useXDomain = true;
                 delete $httpProvider.defaults.headers.common['X-Requested-With'];
             }])
@@ -132,10 +132,19 @@ angular
                     }
                 };
             }])
-        .run(['$rootScope', 'Endpoint', 'Auth', 'AccessToken', '$window', '$location', 'User', '$state', function ($rootScope, Endpoint, Auth, AccessToken, $window, $location, User, $state) {
+        .run(['$rootScope', 'Endpoint', 'Auth', 'AccessToken', '$window', '$timeout', 'User', '$state', function ($rootScope, Endpoint, Auth, AccessToken, $window, $timeout, User, $state) {
 
                 $rootScope.$on('oauth:logout', function () {
-                    Auth.setCurrentUser({});
+                    if (Auth.getCurrentUser().id) {
+                        Auth.setCurrentUser({});
+                        $timeout(function () {
+                            $state.transitionTo('main', {}, {
+                                reload: true,
+                                inherit: false,
+                                notify: true
+                            });
+                        });
+                    }
                 });
 
                 $rootScope.$on('oauth:login', function () {
