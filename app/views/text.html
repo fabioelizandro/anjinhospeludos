@@ -16,7 +16,7 @@
             <li  ng-class="(type === 'aboutUs')? 'active' : '' ">
                 <a ui-sref="text({type: 'aboutUs'})" >Sobre</a>
             </li>
-            <li >
+            <li ng-class="(type === 'privacyPolicy')? ' active' : '' ">
                 <a ui-sref="text({type: 'privacyPolicy'})">Privacidade</a>
             </li>
             <li ng-class="(type === 'termsOfService')? ' active' : '' ">

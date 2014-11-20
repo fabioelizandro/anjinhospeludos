@@ -78,8 +78,8 @@
                 <pagination 
                     scroll-to-top
                     ng-model="page" 
-                    ng-change="updatePets()"
                     total-items="pets.count" 
+                    items-per-page="limit"
                     max-size="5" 
                     class='pagination-lg'
                     boundary-links="true" 

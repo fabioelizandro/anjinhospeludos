@@ -12,7 +12,7 @@ angular.module('todasAsPatasApp')
                 $scope.loader = false;
                 $scope.alerts = [];
                 $scope.page = $location.search().page || 1;
-                $scope.limit = $location.search().limit || 9;
+                $scope.limit = $location.search().limit || 12;
                 $scope.enums = Enum.get();
                 $scope.filters = [];
                 $scope.pets = {};
@@ -139,18 +139,11 @@ angular.module('todasAsPatasApp')
                     $scope.updatePets();
                 };
 
-                /**
-                 * Troca de página
-                 */
-                $scope.pageChange = function () {
-                    $scope.updatePets();
-                };
 
                 /**
                  * Atualiza a lista de pets
                  */
                 $scope.updatePets = function () {
-
                     var params = {
                         'page': $scope.page,
                         'limit': $scope.limit,
@@ -222,6 +215,14 @@ angular.module('todasAsPatasApp')
                 $scope.$watch('type', function (newValue) {
                     $location.search('type', (newValue !== null) ? newValue.id : null);
                 });
+                
+                /**
+                 * Atualiza a página da URL 
+                 */
+                $scope.$watch('page', function (newValue) {
+                    $location.search('page', newValue);
+                    $scope.updatePets();
+                });
 
                 /**
                  * Atualiza $location.search()
@@ -258,10 +259,6 @@ angular.module('todasAsPatasApp')
                     $location.search('breed', ($scope.breed !== null) ? $scope.breed.id : null);
                 };
                 
-                /**
-                 * Inicializa a página
-                 */
-                $scope.updatePets();
                 $scope.initBreeds();
 
             }]);
